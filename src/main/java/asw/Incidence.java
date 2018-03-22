@@ -1,6 +1,12 @@
 package asw;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+
 public class Incidence {
+	
+	@Id
+	private ObjectId _id;
 
 	private String username;
 	private String password;
@@ -214,3 +220,4 @@ public class Incidence {
 	}
 
 }
+
