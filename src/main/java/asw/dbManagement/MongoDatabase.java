@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import asw.Incidence;
 
 @Service
-public class MogoDatabase implements Database{
+public class MongoDatabase implements Database{
 	
 	@Autowired
     private IncidenceRepository incidences;
