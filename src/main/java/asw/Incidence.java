@@ -1,6 +1,12 @@
 package asw;
 
-public class Incidencia {
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+
+public class Incidence {
+	
+	@Id
+    private ObjectId _id;
 
 	private String username;
 	private String password;
@@ -16,9 +22,9 @@ public class Incidencia {
 	private String expiration;
 	private String assignedTo;
 
-	public Incidencia() {}
+	public Incidence() {}
 
-	public Incidencia(String username, String password, String name, String description, String location, String tags,
+	public Incidence(String username, String password, String name, String description, String location, String tags,
 			String additionalInformation, String property, String state) {
 		super();
 		this.username = username;
@@ -146,7 +152,7 @@ public class Incidencia {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Incidencia other = (Incidencia) obj;
+		Incidence other = (Incidence) obj;
 		if (additionalInformation == null) {
 			if (other.additionalInformation != null)
 				return false;
