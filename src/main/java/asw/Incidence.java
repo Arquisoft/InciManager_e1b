@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 public class Incidence {
 	
 	@Id
-  private ObjectId _id;
+	private ObjectId _id;
 
 	private String username;
 	private String password;
