@@ -1,4 +1,4 @@
-package servicioRest;
+package asw.restService;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
