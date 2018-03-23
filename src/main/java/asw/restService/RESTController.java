@@ -1,4 +1,4 @@
-package servicioRest;
+package asw.restService;
 
 import java.util.Map;
 
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Controller {
+public class RESTController {
 	
 	@Autowired
 	AgentsConnector agentsConnector;
