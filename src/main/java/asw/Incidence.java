@@ -4,7 +4,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 public class Incidence {
-	
+
 	@Id
 	private ObjectId _id;
 
@@ -16,13 +16,14 @@ public class Incidence {
 	private String location;
 	private String tags;
 	private String additionalInformation;
-	private String property;
+	private String propertys;
 	private String state;
 
 	private String expiration;
 	private String assignedTo;
 
-	public Incidence() {}
+	public Incidence() {
+	}
 
 	public Incidence(String username, String password, String name, String description, String location, String tags,
 			String additionalInformation, String property, String state) {
@@ -34,7 +35,7 @@ public class Incidence {
 		this.location = location;
 		this.tags = tags;
 		this.additionalInformation = additionalInformation;
-		this.property = property;
+		this.propertys = property;
 		this.state = state;
 	}
 
@@ -94,12 +95,12 @@ public class Incidence {
 		this.additionalInformation = additionalInformation;
 	}
 
-	public String getProperty() {
-		return property;
+	public String getPropertys() {
+		return propertys;
 	}
 
-	public void setProperty(String property) {
-		this.property = property;
+	public void setPropertys(String property) {
+		this.propertys = property;
 	}
 
 	public String getState() {
@@ -137,7 +138,7 @@ public class Incidence {
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((property == null) ? 0 : property.hashCode());
+		result = prime * result + ((propertys == null) ? 0 : propertys.hashCode());
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
 		result = prime * result + ((tags == null) ? 0 : tags.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
@@ -188,10 +189,10 @@ public class Incidence {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (property == null) {
-			if (other.property != null)
+		if (propertys == null) {
+			if (other.propertys != null)
 				return false;
-		} else if (!property.equals(other.property))
+		} else if (!propertys.equals(other.propertys))
 			return false;
 		if (state == null) {
 			if (other.state != null)
@@ -215,9 +216,8 @@ public class Incidence {
 	public String toString() {
 		return "Incidencia [username=" + username + ", password=" + password + ", name=" + name + ", description="
 				+ description + ", location=" + location + ", tags=" + tags + ", additionalInformation="
-				+ additionalInformation + ", property=" + property + ", state=" + state + ", expiration=" + expiration
+				+ additionalInformation + ", property=" + propertys + ", state=" + state + ", expiration=" + expiration
 				+ ", assignedTo=" + assignedTo + "]";
 	}
 
 }
-
