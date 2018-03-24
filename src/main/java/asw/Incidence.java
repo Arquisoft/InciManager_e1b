@@ -16,7 +16,7 @@ public class Incidence {
 	private String location;
 	private String tags;
 	private String additionalInformation;
-	private String property;
+	private String properties;
 	private String state;
 
 	private String expiration;
@@ -34,7 +34,7 @@ public class Incidence {
 		this.location = location;
 		this.tags = tags;
 		this.additionalInformation = additionalInformation;
-		this.property = property;
+		this.properties = property;
 		this.state = state;
 	}
 
@@ -94,12 +94,12 @@ public class Incidence {
 		this.additionalInformation = additionalInformation;
 	}
 
-	public String getProperty() {
-		return property;
+	public String getProperties() {
+		return properties;
 	}
 
-	public void setProperty(String property) {
-		this.property = property;
+	public void setProperties(String property) {
+		this.properties = property;
 	}
 
 	public String getState() {
@@ -137,7 +137,7 @@ public class Incidence {
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((property == null) ? 0 : property.hashCode());
+		result = prime * result + ((properties == null) ? 0 : properties.hashCode());
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
 		result = prime * result + ((tags == null) ? 0 : tags.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
@@ -188,10 +188,10 @@ public class Incidence {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (property == null) {
-			if (other.property != null)
+		if (properties == null) {
+			if (other.properties != null)
 				return false;
-		} else if (!property.equals(other.property))
+		} else if (!properties.equals(other.properties))
 			return false;
 		if (state == null) {
 			if (other.state != null)
@@ -215,7 +215,7 @@ public class Incidence {
 	public String toString() {
 		return "Incidencia [username=" + username + ", password=" + password + ", name=" + name + ", description="
 				+ description + ", location=" + location + ", tags=" + tags + ", additionalInformation="
-				+ additionalInformation + ", property=" + property + ", state=" + state + ", expiration=" + expiration
+				+ additionalInformation + ", property=" + properties + ", state=" + state + ", expiration=" + expiration
 				+ ", assignedTo=" + assignedTo + "]";
 	}
 
