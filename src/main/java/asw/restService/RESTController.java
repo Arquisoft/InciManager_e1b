@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
 
 @RestController
 public class RESTController {
@@ -24,16 +25,25 @@ public class RESTController {
 	@RequestMapping(value = "/incidence-creator", method = RequestMethod.POST, headers = { "Accept=application/json",
 	"Accept=application/xml" }, produces = { "application/json", "text/xml" })
 	public ResponseEntity<String> processIncidence(@RequestBody Map<String, Object> params) {
-		HttpResponse auth = agentsConnector.executeQuery( new AgentLoginFormatter(params).query() );
+		HttpResponse<JsonNode> auth = agentsConnector.executeQuery( new AgentLoginFormatter(params).query() );
 		
 		if(auth.getStatus() != HttpStatus.OK.value()) {
 			return new ResponseEntity<String>("{\"response\":\"Login incorrecto\"}", HttpStatus.UNAUTHORIZED );
 		}
 		
-		System.out.println(auth.getStatus());
+		//Añadimos los datos del agente a la incidencia
+		Map jsonContent = (Map) params.get("incidencia");
+		jsonContent.put("name", auth.getBody().getObject().get("name"));
+		jsonContent.put("location", auth.getBody().getObject().get("location"));
+		jsonContent.put("email", auth.getBody().getObject().get("email"));
+		jsonContent.put("id", auth.getBody().getObject().get("id"));
+		jsonContent.put("kind", auth.getBody().getObject().get("kind"));
+		jsonContent.put("kindCode", auth.getBody().getObject().get("kindCode"));
 		
-		//Todavia no hay incidencia que crear, pero el login es correcto
-		//con lo cual ya esta comunicado con el módulo de agents
+		System.out.println(jsonContent);
+
+		
+		//Enviar el objeto con la informacion de la incidencia a kafka y al mongo
 		return new ResponseEntity<String>("{\"response\":\"Incidencia procesada\"}", HttpStatus.OK );
 
 		
