@@ -136,6 +136,7 @@ public class Incidence {
 
 	public void setProperties(Map<String, String> properties) {
 		this.properties = properties;
+	}
 
 
 	public String getNotification() {
