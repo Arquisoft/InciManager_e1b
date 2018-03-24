@@ -136,7 +136,7 @@ public class Incidence {
 
 	public void setProperties(Map<String, String> properties) {
 		this.properties = properties;
-	}
+
 
 	public String getNotification() {
 		return notification;
@@ -145,6 +145,10 @@ public class Incidence {
 	public void setNotification(String notification) {
 		this.notification = notification;
 	}
+
+	
+
+	
 
 }
 

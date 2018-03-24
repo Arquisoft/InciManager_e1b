@@ -1,16 +1,15 @@
 package asw.restService;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mashape.unirest.http.HttpResponse;
@@ -32,7 +31,7 @@ public class RESTController {
 		}
 		
 		//Añadimos los datos del agente a la incidencia
-		Map jsonContent = (Map) params.get("incidencia");
+		Map<String, Object> jsonContent = new HashMap<String, Object>();
 		jsonContent.put("name", auth.getBody().getObject().get("name"));
 		jsonContent.put("location", auth.getBody().getObject().get("location"));
 		jsonContent.put("email", auth.getBody().getObject().get("email"));
