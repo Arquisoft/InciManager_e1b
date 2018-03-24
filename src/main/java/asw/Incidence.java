@@ -1,5 +1,8 @@
 package asw;
 
+import java.util.List;
+import java.util.Map;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
@@ -14,18 +17,18 @@ public class Incidence {
 	private String name;
 	private String description;
 	private String location;
-	private String tags;
+	private List<String> tags;
 	private String additionalInformation;
-	private String property;
-	private String state;
+	private Map<String, String> properties;
+	private String state="abierta";
 
-	private String expiration;
+	private String expireAt;
 	private String assignedTo;
 
 	public Incidence() {}
 
-	public Incidence(String username, String password, String name, String description, String location, String tags,
-			String additionalInformation, String property, String state) {
+	public Incidence(String username, String password, String name, String description, String location, List<String> tags,
+			String additionalInformation, Map<String, String> property, String state) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -34,7 +37,7 @@ public class Incidence {
 		this.location = location;
 		this.tags = tags;
 		this.additionalInformation = additionalInformation;
-		this.property = property;
+		this.properties = property;
 		this.state = state;
 	}
 
@@ -78,13 +81,6 @@ public class Incidence {
 		this.location = location;
 	}
 
-	public String getTags() {
-		return tags;
-	}
-
-	public void setTags(String tags) {
-		this.tags = tags;
-	}
 
 	public String getAdditionalInformation() {
 		return additionalInformation;
@@ -94,13 +90,6 @@ public class Incidence {
 		this.additionalInformation = additionalInformation;
 	}
 
-	public String getProperty() {
-		return property;
-	}
-
-	public void setProperty(String property) {
-		this.property = property;
-	}
 
 	public String getState() {
 		return state;
@@ -111,11 +100,11 @@ public class Incidence {
 	}
 
 	public String getExpiration() {
-		return expiration;
+		return expireAt;
 	}
 
 	public void setExpiration(String expiration) {
-		this.expiration = expiration;
+		this.expireAt = expiration;
 	}
 
 	public String getAssignedTo() {
@@ -126,18 +115,35 @@ public class Incidence {
 		this.assignedTo = assignedTo;
 	}
 
+	public List<String> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<String> tags) {
+		this.tags = tags;
+	}
+
+	public Map<String, String> getProperties() {
+		return properties;
+	}
+
+	public void setProperties(Map<String, String> properties) {
+		this.properties = properties;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((_id == null) ? 0 : _id.hashCode());
 		result = prime * result + ((additionalInformation == null) ? 0 : additionalInformation.hashCode());
 		result = prime * result + ((assignedTo == null) ? 0 : assignedTo.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((expiration == null) ? 0 : expiration.hashCode());
+		result = prime * result + ((expireAt == null) ? 0 : expireAt.hashCode());
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((property == null) ? 0 : property.hashCode());
+		result = prime * result + ((properties == null) ? 0 : properties.hashCode());
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
 		result = prime * result + ((tags == null) ? 0 : tags.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
@@ -153,6 +159,11 @@ public class Incidence {
 		if (getClass() != obj.getClass())
 			return false;
 		Incidence other = (Incidence) obj;
+		if (_id == null) {
+			if (other._id != null)
+				return false;
+		} else if (!_id.equals(other._id))
+			return false;
 		if (additionalInformation == null) {
 			if (other.additionalInformation != null)
 				return false;
@@ -168,10 +179,10 @@ public class Incidence {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (expiration == null) {
-			if (other.expiration != null)
+		if (expireAt == null) {
+			if (other.expireAt != null)
 				return false;
-		} else if (!expiration.equals(other.expiration))
+		} else if (!expireAt.equals(other.expireAt))
 			return false;
 		if (location == null) {
 			if (other.location != null)
@@ -188,10 +199,10 @@ public class Incidence {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (property == null) {
-			if (other.property != null)
+		if (properties == null) {
+			if (other.properties != null)
 				return false;
-		} else if (!property.equals(other.property))
+		} else if (!properties.equals(other.properties))
 			return false;
 		if (state == null) {
 			if (other.state != null)
@@ -211,13 +222,7 @@ public class Incidence {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Incidencia [username=" + username + ", password=" + password + ", name=" + name + ", description="
-				+ description + ", location=" + location + ", tags=" + tags + ", additionalInformation="
-				+ additionalInformation + ", property=" + property + ", state=" + state + ", expiration=" + expiration
-				+ ", assignedTo=" + assignedTo + "]";
-	}
+	
 
 }
 
