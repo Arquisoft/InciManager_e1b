@@ -40,11 +40,12 @@ public class KafkaServiceImpl implements KafkaService {
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		map.put("username", incidence.getUsername());
-		map.put("name", incidence.getName());
+		map.put("password", incidence.getPassword());
+		map.put("inciName", incidence.getName());
 		map.put("description", incidence.getDescription());
 		map.put("location", incidence.getLocation());
 		map.put("tags", incidence.getTags());
-		map.put("multimedia", incidence.getAdditionalInformation());
+		map.put("addicionalInformation", incidence.getAdditionalInformation());
 		map.put("properties", incidence.getProperties());
 		map.put("state", incidence.getState());
 		map.put("notification", incidence.getNotification());

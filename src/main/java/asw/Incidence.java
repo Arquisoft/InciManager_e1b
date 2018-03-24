@@ -27,8 +27,10 @@ public class Incidence {
 
 	public Incidence() {}
 
-	public Incidence(String username, String password, String name, String description, String location, List<String> tags,
-			String additionalInformation, Map<String, String> property, String state) {
+	
+	public Incidence(String username, String password, String name, String description, String location,
+			List<String> tags, String additionalInformation, Map<String, String> properties, String state,
+			String notification, String expireAt, String assignedTo) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -37,9 +39,14 @@ public class Incidence {
 		this.location = location;
 		this.tags = tags;
 		this.additionalInformation = additionalInformation;
-		this.properties = property;
+		this.properties = properties;
 		this.state = state;
+		this.notification = notification;
+		this.expireAt = expireAt;
+		this.assignedTo = assignedTo;
 	}
+
+
 
 	public String getUsername() {
 		return username;
