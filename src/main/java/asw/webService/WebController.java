@@ -79,7 +79,7 @@ public class WebController {
 		
 		mongoDatabase.sendInci(incidence);
 		
-		model.addAttribute("incidence", incidence);
+		model.addAttribute("incidence", incidenceData);
 		
 		return "incidentDetails";
 	}
