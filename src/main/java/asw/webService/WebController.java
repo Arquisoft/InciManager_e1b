@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 
+import asw.Incidence;
+import asw.dbManagement.MongoDatabase;
 import asw.restService.AgentLoginFormatter;
 import asw.restService.AgentsConnector;
 import asw.webService.errors.ErrorResponse;
@@ -24,6 +27,9 @@ public class WebController {
 	
 	@Autowired
 	AgentsConnector agentsConnector;
+	
+	@Autowired
+	MongoDatabase mongoDatabase;
 	
 	@RequestMapping(value = "/")
 	public String index() {
@@ -41,12 +47,13 @@ public class WebController {
 	
 	@RequestMapping(value = "/incident")
 	public String getIncident() {
-		return "incidentCreationForm";
+		return "incidentDetails";
 	}
 	
-	@RequestMapping(value = "/create-incident")
-	public String createIncident() {
-		return "incidentCreationForm";
+	@RequestMapping(value = "/sendIncident", method = RequestMethod.POST)
+	public String createIncident(@ModelAttribute Incidence incidence) {
+		mongoDatabase.sendInci(incidence);
+		return "incidentDetails";
 	}
 	
 	@ExceptionHandler(ErrorResponse.class)
