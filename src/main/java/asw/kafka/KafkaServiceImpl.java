@@ -47,6 +47,7 @@ public class KafkaServiceImpl implements KafkaService {
 		map.put("multimedia", incidence.getAdditionalInformation());
 		map.put("properties", incidence.getProperties());
 		map.put("state", incidence.getState());
+		map.put("notification", incidence.getNotification());
 		map.put("expireAt", incidence.getExpiration());
 		map.put("assignedTo", incidence.getAssignedTo());
 		
