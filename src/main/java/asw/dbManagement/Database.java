@@ -6,10 +6,7 @@ public interface Database {
 	
 	/**
 	 * Add a new incidence.
-	 * 
 	 * @param incidence
 	 */
     void sendInci(Incidence incidence);
-
-
 }
