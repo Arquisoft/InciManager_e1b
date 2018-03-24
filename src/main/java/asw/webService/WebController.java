@@ -53,41 +53,43 @@ public class WebController {
 		return "incidentDetails";
 	}
 	
+	
 	@RequestMapping(value = "/sendIncident", method = RequestMethod.POST)
-	public String createIncident(Model model, @ModelAttribute Incidence incidence) {
-		mongoDatabase.sendInci(incidence);
+	public String createIncident(Model model, @ModelAttribute IncidenceData incidenceData) {
+		Incidence incidence = new Incidence();
 		
-		model.addAttribute("username", incidence.getUsername());
-		model.addAttribute("name", incidence.getName());
-		model.addAttribute("description", incidence.getDescription());
-		model.addAttribute("location", incidence.getLocation());
+		incidence.setUsername(incidenceData.getUsername());
+		incidence.setPassword(incidenceData.getPassword());
+		incidence.setName(incidenceData.getName());
+		incidence.setDescription(incidenceData.getDescription());
+		incidence.setLocation(incidenceData.getLocation());
 		
 		List<String> tags = new ArrayList<String>();
-		for (String tag : ((String) incidence.getTags()).split(",")) {
+		for (String tag : ((String) incidenceData.getTags()).split(",")) {
 			tags.add(tag.trim());
 		}
-		model.addAttribute("tags", tags);
+		incidence.setTags(tags);
 		
-		
-		List<String> informationList = new ArrayList<String>();
-		for (String information : ((String) incidence.getAdditionalInformation()).split(",")) {
-			informationList.add(information.trim());
-		}
-		model.addAttribute("additionalInformation", informationList);
+		incidence.setAdditionalInformation(incidenceData.getAdditionalInformation());
 		
 		Map<String, String> properties = new HashMap<String, String>();
-		for (String property : ((String) incidence.getProperties()).split(",")) {
+		for (String property : ((String) incidenceData.getProperties()).split(",")) {
 			if (property.split(":").length == 2)
 				properties.put(property.split(":")[0].trim(), property.split(":")[1].trim());
 		}
-		model.addAttribute("properties", properties);
+		incidence.setProperties(properties);
 		
-		model.addAttribute("state", incidence.getState());
-		model.addAttribute("expiration", incidence.getExpiration());
-		model.addAttribute("assignedTo", incidence.getAssignedTo());
+		incidence.setState(incidenceData.getState());
+		incidence.setExpiration(incidenceData.getExpiration());
+		incidence.setAssignedTo(incidenceData.getAssignedTo());
+		
+		mongoDatabase.sendInci(incidence);
+		
+		model.addAttribute("incidence", incidence);
 		
 		return "incidentDetails";
 	}
+	
 	
 	@ExceptionHandler(ErrorResponse.class)
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
