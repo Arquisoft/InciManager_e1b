@@ -10,16 +10,16 @@
 		<h2> Incidencia procesada </h2>
         <ul>
         
-            <li th:text="${'Usuario:' + username}"></li>
-            <li th:text="${'Nombre de la incidencia:' + name}"></li>
-            <li th:text="${'Descripción:' + description}"></li>
-            <li th:text="${'Localización:' + location}"></li>
-            <li th:text="${'Etiquetas:' + tags}"></li>
-            <li th:text="${'Información adicional:' + additionalInformation}"></li>
-            <li th:text="${'Propiedades:' + properties}"></li>
-            <li th:text="${'Estado:' + state}"></li>
-            <li th:text="${'Fecha de expiration:' + name}"></li>
-            <li th:text="${'Asignada a:' + assignedTo}"></li>
+            <li th:text="${'Usuario:' + incidence.username}"></li>
+            <li th:text="${'Nombre de la incidencia:' + incidence.name}"></li>
+            <li th:text="${'Descripción:' + incidence.description}"></li>
+            <li th:text="${'Localización:' + incidence.location}"></li>
+            <li th:text="${'Etiquetas:' + incidence.tags}"></li>
+            <li th:text="${'Información adicional:' + incidence.additionalInformation}"></li>
+            <li th:text="${'Propiedades:' + incidence.properties}"></li>
+            <li th:text="${'Estado:' + incidence.state}"></li>
+            <li th:text="${'Fecha de expiration:' + incidence.expiration}"></li>
+            <li th:text="${'Asignada a:' + incidence.assignedTo}"></li>
             
         </ul>
 		
