@@ -7,7 +7,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 public class Incidence {
-	
+
 	@Id
 	private ObjectId _id;
 
@@ -19,13 +19,16 @@ public class Incidence {
 	private String location;
 	private List<String> tags;
 	private String additionalInformation;
+
 	private Map<String, String> properties;
 	private String state="OPEN";
 	private String notification;
 	private String expireAt;
+
 	private String assignedTo;
 
-	public Incidence() {}
+	public Incidence() {
+	}
 
 	
 	public Incidence(String username, String password, String name, String description, String location,
@@ -97,7 +100,6 @@ public class Incidence {
 		this.additionalInformation = additionalInformation;
 	}
 
-
 	public String getState() {
 		return state;
 	}
@@ -146,9 +148,4 @@ public class Incidence {
 		this.notification = notification;
 	}
 
-	
-
-	
-
 }
-
