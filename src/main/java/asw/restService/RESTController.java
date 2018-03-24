@@ -1,8 +1,8 @@
 package asw.restService;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,8 +40,7 @@ public class RESTController {
 		jsonContent.put("kind", auth.getBody().getObject().get("kind"));
 		jsonContent.put("kindCode", auth.getBody().getObject().get("kindCode"));
 		
-		System.out.println(jsonContent);
-
+		System.out.println(new JSONObject(jsonContent));
 		
 		//Enviar el objeto con la informacion de la incidencia a kafka y al mongo
 		return new ResponseEntity<String>("{\"response\":\"Incidencia procesada\"}", HttpStatus.OK );

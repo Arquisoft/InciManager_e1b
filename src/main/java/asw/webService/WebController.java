@@ -1,5 +1,7 @@
 package asw.webService;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+
+import asw.restService.AgentLoginFormatter;
 import asw.restService.AgentsConnector;
 
 @Controller
@@ -24,7 +30,11 @@ public class WebController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String fillLogin() {
+	public String fillLogin(@RequestParam String ident, @RequestParam String password, @RequestParam String kind) {
+		HttpResponse<JsonNode> auth = agentsConnector.executeQuery( new AgentLoginFormatter(ident, password, kind).query() );
+		if(auth.getStatus() == HttpStatus.OK.value())
+			return "incidentCreationForm";
+		
 		return "login";
 	}
 	
