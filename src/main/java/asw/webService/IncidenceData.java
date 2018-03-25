@@ -11,6 +11,7 @@ public class IncidenceData {
 	private String additionalInformation;
 	private String properties;
 	private String state;
+	private String notification;
 	private String expiration;
 	private String assignedTo;
 
@@ -56,6 +57,14 @@ public class IncidenceData {
 
 	public String getAssignedTo() {
 		return assignedTo;
+	}
+	
+	public String getNotification() {
+		return notification;
+	}
+
+	public void setNotification(String notification) {
+		this.notification = notification;
 	}
 
 	public void setUsername(String username) {
