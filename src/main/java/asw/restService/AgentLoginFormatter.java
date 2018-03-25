@@ -23,4 +23,14 @@ public class AgentLoginFormatter {
 	public String query() {
 		return String.format( BASE_QUERY, this.userName, this.password, this.kind );
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+	
+	
 }
