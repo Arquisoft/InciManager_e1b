@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Incidence Form</title>
+</head>
+<body>
+	
+	<div>
+		<h2> Incidencia procesada </h2>
+        <ul>
+        
+            <li th:text="${'Usuario:' + incidence.username}"></li>
+            <li th:text="${'Nombre de la incidencia:' + incidence.name}"></li>
+            <li th:text="${'Descripción:' + incidence.description}"></li>
+            <li th:text="${'Localización:' + incidence.location}"></li>
+            <li th:text="${'Etiquetas:' + incidence.tags}"></li>
+            <li th:text="${'Información adicional:' + incidence.additionalInformation}"></li>
+            <li th:text="${'Propiedades:' + incidence.properties}"></li>
+            <li th:text="${'Estado:' + incidence.state}"></li>
+            <li th:text="${'Fecha de expiration:' + incidence.expiration}"></li>
+            <li th:text="${'Asignada a:' + incidence.assignedTo}"></li>
+            
+        </ul>
+		
+        	<button type="button" id="resendButton">Enviar otra incidencia</button>
+        
+	</div>
+
+</body>
+</html>

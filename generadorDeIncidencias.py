@@ -9,12 +9,46 @@ url = "http://localhost:8090/incidence-creator"
 """
 Agent List Input
 """
-agentList = []
+agentList = [
+                {
+                    "ident":"12345678P",
+                    "password":"123456",
+                    "kind":1
+                },
+                {
+                    "ident":"12345678A",
+                    "password":"123456",
+                    "kind":1
+                },
+                {
+                    "ident":"entidad1",
+                    "password":"123456",
+                    "kind":2
+                },
+                {
+                    "ident":"entidad2",
+                    "password":"123456",
+                    "kind":2
+                },
+                {
+                    "ident":"sensor1",
+                    "password":"123456",
+                    "kind":3
+                },
+                {
+                    "ident":"sensor2",
+                    "password":"123456",
+                    "kind":3
+                }
+]
+
 
 
 """
 Incidence's field randomizer
 """
+
+getRandomAgent = lambda: agentList[random.randint(0, len(agentList)-1)]
 incNameRandomizer = lambda n: 'inc_' + ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits+ string.ascii_uppercase) for _ in range(n))
 
 def incDescriptionRandomizer():
@@ -29,32 +63,67 @@ def incLocalizationRandomizer():
     a, b = random.randint(-9999, 10000), random.randint(-9999, 10000)
     return '%d.%d' % (a, b)
 
-def incExpirationDateRandomizer():
-    return ""
+incOperarioRandomizer = lambda n: 'oper_' + ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits+ string.ascii_uppercase) for _ in range(n))
 
+def incExpirationDateRandomizer():
+    return datetime.now() + timedelta(seconds= int((datetime(2019,3,25,0,16,20,220650) - datetime.now()).total_seconds() * random.random()))
 
 def incStateRandomizer():
-    return ""
+    incStates = ["Abierta", "Cerrada", "En proceso", "Anulada"]
+    return incStates[random.randint(0, len(incStates)-1)]
 
-incTagsRandomizer = lambda x: x
-incMultimediaRandomizer = lambda x: x
-incPropertiesRandomizer = lambda x: x
+def incTagsRandomizer(n):
+    incTags = ["Lluvia", "Fuego", "Nieve", "Niebla", "Terremoto", "Inundacion"]
+    a = lambda: incTags[random.randint(0, len(incTags)-1)]
+    return ",".join([a() for x in range(n)])
 
+def incMultimediaRandomizer():
+    return "http://puntoverdeleon.com.mx/wp-content/uploads/2016/09/imagen-de-prueba-320x240.jpg"
+
+
+def incPropertiesRandomizer(n):
+    return ','.join(['"p%d":"v%d"' % (x,x) for x in range(n)])
 
 def generateRandomIncidence():
-    return ""
+    jsonResult = '''
+{
+    "ident":"%s",
+    "password":"%s",
+    "kind":%d,
+    "incidencia":{
+        "nombreIncidencia":"%s",
+        "descripcion":"%s",
+        "localizacion":"%s",
+        "operario":"%s",
+        "fechaCaducidad":"%s",
+        "estado":"%s",
+        "etiquetas":"%s",
+        "informacion":"%s",
+        "propiedades":{
+            %s
+         }
+     }
+}
+    '''
+
+    agent = getRandomAgent()
+    return (jsonResult % (agent["ident"], agent["password"], agent["kind"],
+                        incNameRandomizer(4), incDescriptionRandomizer(), incLocalizationRandomizer(),
+                        incOperarioRandomizer(4), incExpirationDateRandomizer(), incStateRandomizer(),
+                        incTagsRandomizer(4), incMultimediaRandomizer(), incPropertiesRandomizer(4))).strip()
 
 """
 Send randomized incidences to an endpoint
 """
 def sendIncidence(incidence):
-    req = urllib2.Request(url, json.dumps(values), headers={'Content-type': 'application/json', 'Accept': 'application/json'})
+    incidence = json.loads(incidence)
+    req = urllib2.Request(url, json.dumps(incidence), headers={'Content-type': 'application/json', 'Accept': 'application/json'})
     response = urllib2.urlopen(req)
     return response.read()
 
-sendIncidences = lambda incidences: [sendIncidence(inc) for inc in incidences]
+sendIncidences = lambda n, inc: [sendIncidence(inc) for x in range(n)]
 
 
 
 if '__main__':
-    print "No ta acabao parse"
+    print sendIncidences(10, generateRandomIncidence())
