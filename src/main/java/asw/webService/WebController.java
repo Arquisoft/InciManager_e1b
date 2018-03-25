@@ -27,6 +27,7 @@ import asw.kafka.KafkaServiceImpl;
 import asw.restService.AgentLoginFormatter;
 
 import asw.restService.AgentsConnector;
+import asw.webService.errors.ErrorResponse;
 
 @Controller
 public class WebController {
@@ -95,6 +96,14 @@ public class WebController {
 		model.addAttribute("incidence", incidenceData);
 		
 		return "incidentForm";
+	}
+	
+	@ExceptionHandler(ErrorResponse.class)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
+	public String handleErrorResponseNotFound(ErrorResponse excep, Model model) {
+		model.addAttribute("error", excep.getMessageStringFormat());
+
+		return "error";
 	}
 
 
