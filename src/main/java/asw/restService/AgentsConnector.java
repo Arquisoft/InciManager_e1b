@@ -13,6 +13,7 @@ public class AgentsConnector {
 
 	private String username;
 	private String password;
+	private String location;
 
 	public HttpResponse<JsonNode> executeQuery(String query) {
 		try {
@@ -41,4 +42,11 @@ public class AgentsConnector {
 		this.password = password;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
 }

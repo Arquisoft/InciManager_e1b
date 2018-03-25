@@ -49,6 +49,7 @@ public class WebController {
 		if (auth.getStatus() == HttpStatus.OK.value()) {
 			agentsConnector.setUsername(ident);
 			agentsConnector.setPassword(password);
+			agentsConnector.setLocation((String) auth.getBody().getObject().get("location"));
 			return "incidentForm";
 		}
 
@@ -69,7 +70,12 @@ public class WebController {
 		incidence.setPassword(agentsConnector.getPassword());
 		incidence.setName(incidenceData.getName());
 		incidence.setDescription(incidenceData.getDescription());
-		incidence.setLocation(incidenceData.getLocation());
+		
+		
+		if(incidenceData.getLocation() == "")
+			incidence.setLocation(agentsConnector.getLocation());
+		else
+			incidence.setLocation(incidenceData.getLocation());
 
 		List<String> tags = new ArrayList<String>();
 		for (String tag : ((String) incidenceData.getTags()).split(",")) {
@@ -95,11 +101,6 @@ public class WebController {
 		model.addAttribute("incidence", incidenceData);
 
 		return "incidentDetails";
-	}
-
-	@RequestMapping(value = "/resendIncident", method = RequestMethod.POST)
-	public String resendIncident() {
-		return "incidentForm";
 	}
 
 	@ExceptionHandler(ErrorResponse.class)
