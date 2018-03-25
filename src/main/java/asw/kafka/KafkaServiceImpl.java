@@ -1,7 +1,5 @@
 package asw.kafka;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.annotation.ManagedBean;
 
@@ -20,50 +18,33 @@ import asw.dbManagement.MongoDatabase;
 
 @ManagedBean
 public class KafkaServiceImpl implements KafkaService {
-	
+
 	@Value("${kafka.topic}")
 	private String TOPIC;
-	
+
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
-	
+
 	@Autowired
 	private MongoDatabase mongoDatabase;
-	
+
 	private static final Logger logger = Logger.getLogger(KafkaProducer.class);
-	private Incidence inci;
+
 
 	@Override
 	public void sendInci(Incidence incidence) {
-		this.inci = incidence;
-		
-		Map<String, Object> map = new HashMap<String, Object>();
 
-		map.put("username", incidence.getUsername());
-		map.put("password", incidence.getPassword());
-		map.put("inciName", incidence.getName());
-		map.put("description", incidence.getDescription());
-		map.put("location", incidence.getLocation());
-		map.put("tags", incidence.getTags());
-		map.put("addicionalInformation", incidence.getAdditionalInformation());
-		map.put("properties", incidence.getProperties());
-		map.put("state", incidence.getState());
-		map.put("notification", incidence.getNotification());
-		map.put("expireAt", incidence.getExpiration());
-		map.put("assignedTo", incidence.getAssignedTo());
-		
-		
-		send(TOPIC, new JSONObject(map).toString());
+		send(TOPIC, incidence);
 
 	}
 
-	private void send(String topic, String data) {
-		ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, data);
+	private void send(String topic, Incidence data) {
+		ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, new JSONObject(data).toString());
 		future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 			@Override
 			public void onSuccess(SendResult<String, String> result) {
 				logger.info("SUCCESS on sending message \"" + data + "\" to topic " + topic);
-				mongoDatabase.sendInci(inci);
+				mongoDatabase.sendInci(data);
 			}
 
 			@Override
