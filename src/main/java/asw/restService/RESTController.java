@@ -76,9 +76,10 @@ public class RESTController {
 		
 
 		incidence.setState((String) params.get("state"));
+		incidence.setNotification((String) params.get("notification"));
 		incidence.setExpiration((String) params.get("expireAt"));
 		incidence.setAssignedTo((String) params.get("assignedTo"));
-
+		
 		kafkaManager.sendInci(incidence);
 		
 		//Enviar el objeto con la informacion de la incidencia a kafka y al mongo
