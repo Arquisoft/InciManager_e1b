@@ -2,7 +2,7 @@ package asw.restService;
 
 import java.util.Map;
 
-//Class extracted from: https://github.com/Arquisoft/InciManager_e1b/blob/develop/src/main/java/asw/restService/AgentLoginFormatter.java
+//Class extracted from: https://github.com/Arquisoft/InciManager_i3a/blob/master/src/main/java/org/uniovi/i3a/incimanager/rest/AgentsQueryFormatter.java
 public class AgentLoginFormatter {
 	private static final String BASE_QUERY = "{\"ident\":\"%s\", \"password\":\"%s\", \"kind\":\"%s\"}";
 
