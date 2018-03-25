@@ -22,7 +22,6 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 
 import asw.Incidence;
-import asw.dbManagement.MongoDatabase;
 import asw.kafka.KafkaServiceImpl;
 import asw.restService.AgentLoginFormatter;
 
@@ -35,8 +34,6 @@ public class WebController {
 	@Autowired
 	AgentsConnector agentsConnector;
 	
-	//@Autowired
-	//MongoDatabase mongoDatabase;
 	
 	@Autowired
 	KafkaServiceImpl kafkaManager;
@@ -63,10 +60,9 @@ public class WebController {
 	
 	@RequestMapping(value = "/sendIncident", method = RequestMethod.POST)
 	public String createIncident(Model model, @ModelAttribute IncidenceData incidenceData) {
+		
 		Incidence incidence = new Incidence();
 		
-		incidence.setUsername(incidenceData.getUsername());
-		incidence.setPassword(incidenceData.getPassword());
 		incidence.setName(incidenceData.getName());
 		incidence.setDescription(incidenceData.getDescription());
 		incidence.setLocation(incidenceData.getLocation());
@@ -90,12 +86,11 @@ public class WebController {
 		incidence.setExpiration(incidenceData.getExpiration());
 		incidence.setAssignedTo(incidenceData.getAssignedTo());
 		
-		//mongoDatabase.sendInci(incidence);
 		kafkaManager.sendInci(incidence);
 		
 		model.addAttribute("incidence", incidenceData);
 		
-		return "incidentForm";
+		return "incidentDetails";
 	}
 	
 	@ExceptionHandler(ErrorResponse.class)
