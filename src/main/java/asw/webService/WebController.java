@@ -93,6 +93,7 @@ public class WebController {
 		incidence.setProperties(properties);
 
 		incidence.setState(incidenceData.getState());
+		incidence.setNotification(incidenceData.getNotification());
 		incidence.setExpiration(incidenceData.getExpiration());
 		incidence.setAssignedTo(incidenceData.getAssignedTo());
 
