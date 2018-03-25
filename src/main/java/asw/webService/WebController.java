@@ -38,7 +38,11 @@ public class WebController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String fillLogin() {
+	public String fillLogin(@RequestParam String ident, @RequestParam String password, @RequestParam String kind) {
+		HttpResponse<JsonNode> auth = agentsConnector.executeQuery( new AgentLoginFormatter(ident, password, kind).query() );
+		if(auth.getStatus() == HttpStatus.OK.value())
+			return "incidentCreationForm";
+		
 		return "login";
 	}
 	
