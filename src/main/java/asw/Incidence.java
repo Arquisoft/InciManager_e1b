@@ -138,6 +138,7 @@ public class Incidence {
 		this.properties = properties;
 	}
 
+
 	public String getNotification() {
 		return notification;
 	}
