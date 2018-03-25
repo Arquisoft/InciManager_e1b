@@ -97,6 +97,11 @@ public class WebController {
 		return "incidentDetails";
 	}
 
+	@RequestMapping(value = "/resendIncident", method = RequestMethod.POST)
+	public String resendIncident() {
+		return "incidentForm";
+	}
+
 	@ExceptionHandler(ErrorResponse.class)
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	public String handleErrorResponseNotFound(ErrorResponse excep, Model model) {
