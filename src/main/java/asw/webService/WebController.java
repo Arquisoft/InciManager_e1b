@@ -23,6 +23,7 @@ import com.mashape.unirest.http.JsonNode;
 
 import asw.Incidence;
 import asw.dbManagement.MongoDatabase;
+import asw.kafka.KafkaServiceImpl;
 import asw.restService.AgentLoginFormatter;
 
 import asw.restService.AgentsConnector;
@@ -33,8 +34,11 @@ public class WebController {
 	@Autowired
 	AgentsConnector agentsConnector;
 	
+	//@Autowired
+	//MongoDatabase mongoDatabase;
+	
 	@Autowired
-	MongoDatabase mongoDatabase;
+	KafkaServiceImpl kafkaManager;
 	
 	@RequestMapping(value = "/")
 	public String index() {
@@ -85,7 +89,8 @@ public class WebController {
 		incidence.setExpiration(incidenceData.getExpiration());
 		incidence.setAssignedTo(incidenceData.getAssignedTo());
 		
-		mongoDatabase.sendInci(incidence);
+		//mongoDatabase.sendInci(incidence);
+		kafkaManager.sendInci(incidence);
 		
 		model.addAttribute("incidence", incidenceData);
 		
