@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <title>Incidence Form</title>
+<link rel="stylesheet" type="text/css" href="static/detailsCss.css" />
 </head>
 <body>
 	
-	<div>
-		<h2> Incidencia procesada </h2>
+	<div class="sDatos"> 
+		<form method="POST" action="resendIncident">
+		<h1> Incidencia procesada </h1>
         <ul>
         
             <li th:text="${'Nombre de la incidencia:' + incidence.name}"></li>
@@ -22,7 +24,9 @@
             
         </ul>
 		
-        	<button type="button" id="resendButton">Enviar otra incidencia</button>
+        	<button type="submit" id="resendButton">Enviar otra incidencia</button>
+        
+        </form>
         
 	</div>
 
