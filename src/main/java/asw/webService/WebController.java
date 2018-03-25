@@ -15,7 +15,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
 
 import asw.Incidence;
 import asw.dbManagement.MongoDatabase;
@@ -41,7 +45,7 @@ public class WebController {
 	public String fillLogin(@RequestParam String ident, @RequestParam String password, @RequestParam String kind) {
 		HttpResponse<JsonNode> auth = agentsConnector.executeQuery( new AgentLoginFormatter(ident, password, kind).query() );
 		if(auth.getStatus() == HttpStatus.OK.value())
-			return "incidentCreationForm";
+			return "incidentForm";
 		
 		return "login";
 	}
@@ -85,7 +89,7 @@ public class WebController {
 		
 		model.addAttribute("incidence", incidenceData);
 		
-		return "incidentDetails";
+		return "incidentForm";
 	}
 
 
