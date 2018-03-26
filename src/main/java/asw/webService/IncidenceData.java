@@ -14,8 +14,7 @@ public class IncidenceData {
 	private String notification;
 	private String expiration;
 	private String assignedTo;
-	
-	
+
 	public IncidenceData() {
 		// TODO Auto-generated constructor stub
 	}
@@ -36,23 +35,6 @@ public class IncidenceData {
 		this.notification = notification;
 		this.expiration = expiration;
 		this.assignedTo = assignedTo;
-	}
-	
-	
-	public IncidenceData(IncidenceData incidenceData) {
-		super();
-		this.username = incidenceData.getUsername();
-		this.password = incidenceData.getPassword();
-		this.name = incidenceData.getName();
-		this.description = incidenceData.getDescription();
-		this.location = incidenceData.getLocation();
-		this.tags = incidenceData.getTags();
-		this.additionalInformation = incidenceData.getAdditionalInformation();
-		this.properties = incidenceData.getProperties();
-		this.state = incidenceData.getState();
-		this.notification = incidenceData.getNotification();
-		this.expiration = incidenceData.getExpiration();
-		this.assignedTo = incidenceData.getAssignedTo();
 	}
 
 	public String getUsername() {
@@ -98,7 +80,7 @@ public class IncidenceData {
 	public String getAssignedTo() {
 		return assignedTo;
 	}
-	
+
 	public String getNotification() {
 		return notification;
 	}
