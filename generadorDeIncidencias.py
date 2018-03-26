@@ -4,6 +4,8 @@ import urllib2
 import random
 import string
 from datetime import datetime, timedelta
+import sys
+
 
 url = "http://localhost:8090/incidence-creator"
 """
@@ -121,10 +123,10 @@ def sendIncidence(incidence):
     response = urllib2.urlopen(req)
     return response.read()
 
-sendIncidences = lambda n, inc: [sendIncidence(inc) for x in range(n)]
+sendIncidences = lambda n, inc: [sendIncidence(inc) for x in range(int(n))]
 
 
 
 if '__main__':
-   print sendIncidences(10, generateRandomIncidence())
+   print sendIncidences(sys.argv[1], generateRandomIncidence())
    #print generateRandomIncidence()
