@@ -125,13 +125,11 @@ Situate en el directorio de apache kafka, abre dos terminales y ejecuta:
 
 En una:
 
-```bash 
-bin/zookeeper-server-start.sh config/zookeeper.properties ```
+``` bin/zookeeper-server-start.sh config/zookeeper.properties ```
 
 En la otra:
 
-```bash
-bin/kafka-server-start.sh config/server.properties ```
+``` bin/kafka-server-start.sh config/server.properties ```
 
 **OJO**: Si usas windows la ruta cambia:
 ```bin``` por ```bin/windows``` y ```.sh``` por ```.bat```
@@ -141,7 +139,7 @@ bin/kafka-server-start.sh config/server.properties ```
 
 Abre dos terminales, en una situate en el directorio de Agents y en la otra en el directorio de InciManager. En ambas terminales ejecuta:
 
-```sh mvn spring-boot:run ```
+``` mvn spring-boot:run ```
 
 
 ### Generador de incidencias ####
@@ -153,12 +151,12 @@ Esta programado en ***Python 2.7*** y no tiene nada que ver con el proyecto, es 
 Esta genera los campos de la incidencia aleatoriamente y construye el objeto json que se enviará por parámetros al creador de incidencias.
 
 Se ejecuta de la siguiente forma:
-```sh
+
+```
 python2 generadorDeIncidencias.py n
 ```
 
 Donde ***n*** es el número de incidencias a generar. Hay que tener en cuenta que estamos trabajando con una base de datos MongoDB alojada de forma remota en **mlab.com** por lo que no conviene propasarse con el número de incidencias a enviar, ya que por lo que he estado probando le cuesta un poco enviar grandes cantidades de incidencias, tal vez lo mejor sería establecer algún timer, porque lo más seguro es que el culpable de que no se lleguen a almacenar todas las incidencias generadas, sea el hosting, que nos restringe por ser un "***robot***"
 
 El aspecto de una incidencia autogenerada tiene el aspecto del JSON mostrado al principio del readme.
-
 
