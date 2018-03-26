@@ -35,6 +35,14 @@ public class SendIncidentRESTController {
 	public ResponseEntity<IncidenceData> getPOSTIncident(@RequestBody(required = true) IncidenceData incidenceData) {
 
 		Assert.isIncidentNameEmpty(incidenceData.getName());
+		Assert.isIncidentDescriptionEmpty(incidenceData.getDescription());
+		Assert.isIncidentTagsEmpty(incidenceData.getTags());
+		Assert.isIncidentInfomationEmpty(incidenceData.getAdditionalInformation());
+		Assert.isIncidentPropertiesEmpty(incidenceData.getProperties());
+		Assert.isIncidentStateEmpty(incidenceData.getState());
+		Assert.isIncidentNotificationEmpty(incidenceData.getNotification());
+		Assert.isIncidentExpirationEmpty(incidenceData.getExpiration());
+		Assert.isIncidentAssignedToEmpty(incidenceData.getAssignedTo());
 
 		Incidence incidence = new Incidence();
 
