@@ -126,5 +126,5 @@ sendIncidences = lambda n, inc: [sendIncidence(inc) for x in range(n)]
 
 
 if '__main__':
-    print sendIncidences(10, generateRandomIncidence())
-    #print generateRandomIncidence()
+   print sendIncidences(10, generateRandomIncidence())
+   #print generateRandomIncidence()
