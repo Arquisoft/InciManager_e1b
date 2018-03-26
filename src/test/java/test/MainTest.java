@@ -94,5 +94,75 @@ public class MainTest {
 		assertThat(response.getBody(), equalTo(emptyName));
 
 	}
+	
+	
+	@Test
+	public void T2emptyIncidentDescription() {
+		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+		String incidenceURI = base.toString() + "/postIncident";
+		String emptyName = "{\"reason\": \"Incidence description is required\"}";
+
+		incidenceData1.setDescription("");
+		incidenceData2.setDescription("");
+
+		response = template.postForEntity(incidenceURI, incidenceData1, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+
+		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+
+	}
+	
+	@Test
+	public void T3emptyIncidentTagsEmpty() {
+		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+		String incidenceURI = base.toString() + "/postIncident";
+		String emptyName = "{\"reason\": \"Incidence tags is required\"}";
+
+		incidenceData1.setTags("");
+		incidenceData2.setTags("");
+
+		response = template.postForEntity(incidenceURI, incidenceData1, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+
+		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+
+	}
+	
+	@Test
+	public void T4emptyIncidentInformationEmpty() {
+		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+		String incidenceURI = base.toString() + "/postIncident";
+		String emptyName = "{\"reason\": \"Incidence additional information is required\"}";
+
+		incidenceData1.setAdditionalInformation("");
+		incidenceData2.setAdditionalInformation("");
+
+		response = template.postForEntity(incidenceURI, incidenceData1, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+
+		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+
+	}
+	
+	@Test
+	public void T5emptyIncidentPropertiesEmpty() {
+		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+		String incidenceURI = base.toString() + "/postIncident";
+		String emptyName = "{\"reason\": \"Incidence properties is required\"}";
+
+		incidenceData1.setProperties("");
+		incidenceData2.setProperties("");
+
+		response = template.postForEntity(incidenceURI, incidenceData1, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+
+		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+
+	}
+
 
 }
