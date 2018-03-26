@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,15 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
 
-
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import asw.Incidence;
 import asw.kafka.KafkaServiceImpl;
@@ -42,11 +36,21 @@ public class RESTController {
 	@RequestMapping(value = "/incidence-creator", method = RequestMethod.POST, headers = { "Accept=application/json",
 	"Accept=application/xml" }, produces = { "application/json", "text/xml" })
 	public ResponseEntity<String> processIncidence(@RequestBody Map<String, Object> params) {
-		HttpResponse<JsonNode> auth = agentsConnector.executeQuery( new AgentLoginFormatter(params).query() );
-		
-		if(auth.getStatus() != HttpStatus.OK.value()) {
-			return new ResponseEntity<String>("{\"response\":\"Login incorrecto\"}", HttpStatus.UNAUTHORIZED );
+		HttpResponse auth;
+		try {
+			auth = agentsConnector.launchRequest( new AgentLoginFormatter(params).getLoginAsJSON() );
+			if(auth.getStatusLine().getStatusCode() != HttpStatus.OK.value()) {
+				return new ResponseEntity<String>("{\"response\":\"Login incorrecto\"}", HttpStatus.UNAUTHORIZED );
+			}
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+
 		
 		Incidence incidence = new Incidence();
 
