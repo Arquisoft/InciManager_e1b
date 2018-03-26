@@ -1,3 +1,4 @@
+
 package asw.restService;
 
 import java.util.ArrayList;
@@ -98,3 +99,4 @@ public class SendIncidentRESTController {
 	}
 
 }
+
