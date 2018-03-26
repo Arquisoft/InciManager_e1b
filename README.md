@@ -125,11 +125,11 @@ Situate en el directorio de apache kafka, abre dos terminales y ejecuta:
 
 En una:
 
-```sh bin/zookeeper-server-start.sh config/zookeeper.properties ```
+```bash bin/zookeeper-server-start.sh config/zookeeper.properties ```
 
 En la otra:
 
-```sh bin/kafka-server-start.sh config/server.properties ```
+```bash bin/kafka-server-start.sh config/server.properties ```
 
 **OJO**: Si usas windows la ruta cambia:
 ```bin``` por ```bin/windows``` y ```.sh``` por ```.bat```
