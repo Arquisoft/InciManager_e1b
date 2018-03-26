@@ -14,6 +14,36 @@ Este módulo forma parte de un sistema informático de análisis gestión de inc
 
 ## Dependencias del proyecto ##
 
+- **Librería para mongoDB**
+
+```xml
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+```
+
+- **Librería para apache kafka**
+```
+		<!-- https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka -->
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+			<version>2.1.4.RELEASE</version>
+		</dependency>
+```
+
+- **Apache HTTP Components**
+```
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+	    		<groupId>org.apache.httpcomponents</groupId>
+	    		<artifactId>httpclient</artifactId>
+	    		<version>4.5.3</version>
+		</dependency>
+```
+
 
 ## ¿Cómo funciona?
 
@@ -113,5 +143,20 @@ Abre dos terminales, en una situate en el directorio de Agents y en la otra en e
 
 
 ### Generador de incidencias ####
+
+El generador de incidencias simplemente simula ser una aplicación que envia incidencias de forma automática, esta debería ser configurada para que se enviarán cada cierto tiempo, pero por comodidad y simplicidad, puesto que va a ser una demo, esta funcionalidad no se ha implementado.
+
+Esta programado en ***Python 2.7*** y no tiene nada que ver con el proyecto, es una aplicación de terceros que lanza peticiones contra el **endpoint** del gestor de incidencias.
+
+Esta genera los campos de la incidencia aleatoriamente y construye el objeto json que se enviará por parámetros al creador de incidencias.
+
+Se ejecuta de la siguiente forma:
+```
+python2 generadorDeIncidencias.py n
+```
+
+Donde ***n*** es el número de incidencias a generar. Hay que tener en cuenta que estamos trabajando con una base de datos MongoDB alojada de forma remota en **mlab.com** por lo que no conviene propasarse con el número de incidencias a enviar, ya que por lo que he estado probando le cuesta un poco enviar grandes cantidades de incidencias, tal vez lo mejor sería establecer algún timer, porque lo más seguro es que el culpable de que no se lleguen a almacenar todas las incidencias generadas, sea el hosting, que nos restringe por ser un "***robot***"
+
+El aspecto de una incidencia autogenerada tiene el aspecto del JSON mostrado al principio del readme.
 
 
