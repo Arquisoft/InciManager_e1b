@@ -51,7 +51,7 @@ public class WebController {
 		HttpResponse auth;
 		try {
 			auth = agentsConnector.launchRequest(new AgentLoginFormatter(ident, password, kind).getLoginAsJSON());
-			if (auth.getStatusLine().getStatusCode()== HttpStatus.OK.value()) {
+			if (auth.getStatusLine().getStatusCode() == HttpStatus.OK.value()) {
 				agentsConnector.setUsername(ident);
 				agentsConnector.setPassword(password);
 				String response = EntityUtils.toString(auth.getEntity(), "UTF-8");
@@ -65,7 +65,6 @@ public class WebController {
 			e.printStackTrace();
 		}
 
-
 		return "login";
 	}
 
@@ -76,7 +75,7 @@ public class WebController {
 
 	@RequestMapping(value = "/sendIncident", method = RequestMethod.POST)
 	public String createIncident(Model model, @ModelAttribute IncidenceData incidenceData) {
-		
+
 		Assert.isIncidentNameEmpty(incidenceData.getName());
 		Assert.isIncidentDescriptionEmpty(incidenceData.getDescription());
 		Assert.isIncidentTagsEmpty(incidenceData.getTags());
@@ -86,7 +85,7 @@ public class WebController {
 		Assert.isIncidentNotificationEmpty(incidenceData.getNotification());
 		Assert.isIncidentExpirationEmpty(incidenceData.getExpiration());
 		Assert.isIncidentAssignedToEmpty(incidenceData.getAssignedTo());
-		
+
 		Assert.areTagsValid(incidenceData.getTags());
 		Assert.arePropertiesValid(incidenceData.getProperties());
 
@@ -96,10 +95,11 @@ public class WebController {
 		incidence.setPassword(agentsConnector.getPassword());
 		incidence.setName(incidenceData.getName());
 		incidence.setDescription(incidenceData.getDescription());
-		
-		if (incidenceData.getLocation() == "")
+
+		if (incidenceData.getLocation() == "") {
 			incidence.setLocation(agentsConnector.getLocation());
-		else
+			incidenceData.setLocation(agentsConnector.getLocation());
+		} else
 			incidence.setLocation(incidenceData.getLocation());
 
 		List<String> tags = new ArrayList<String>();
