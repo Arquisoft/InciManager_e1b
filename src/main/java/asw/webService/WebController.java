@@ -1,10 +1,16 @@
 package asw.webService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -17,9 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
 
 import asw.Incidence;
 import asw.kafka.KafkaServiceImpl;
@@ -44,14 +47,23 @@ public class WebController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String fillLogin(@RequestParam String ident, @RequestParam String password, @RequestParam String kind) {
-		HttpResponse<JsonNode> auth = agentsConnector
-				.executeQuery(new AgentLoginFormatter(ident, password, kind).query());
-		if (auth.getStatus() == HttpStatus.OK.value()) {
-			agentsConnector.setUsername(ident);
-			agentsConnector.setPassword(password);
-			agentsConnector.setLocation((String) auth.getBody().getObject().get("location"));
-			return "incidentForm";
+		HttpResponse auth;
+		try {
+			auth = agentsConnector.launchRequest(new AgentLoginFormatter(ident, password, kind).getLoginAsJSON());
+			if (auth.getStatusLine().getStatusCode()== HttpStatus.OK.value()) {
+				agentsConnector.setUsername(ident);
+				agentsConnector.setPassword(password);
+				String response = EntityUtils.toString(auth.getEntity(), "UTF-8");
+				JSONObject jsonData = new JSONObject(response);
+				agentsConnector.setLocation(jsonData.getString("location"));
+				return "incidentForm";
+			}
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+
 
 		return "login";
 	}
@@ -70,7 +82,7 @@ public class WebController {
 		incidence.setPassword(agentsConnector.getPassword());
 		incidence.setName(incidenceData.getName());
 		incidence.setDescription(incidenceData.getDescription());
-
+		
 		if (incidenceData.getLocation() == "")
 			incidence.setLocation(agentsConnector.getLocation());
 		else
