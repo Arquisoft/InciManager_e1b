@@ -1,4 +1,4 @@
-package asw.kafka;
+package asw.kafkaManager;
 
 
 import javax.annotation.ManagedBean;
