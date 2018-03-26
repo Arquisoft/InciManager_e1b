@@ -32,7 +32,7 @@ public class Assert {
 		else
 			return true;
 	}
-	
+
 	public static boolean isIncidentInfomationEmpty(String information) {
 		if (information.trim().isEmpty())
 			throw ErrorFactory.getError(Errors.REQUIRED_INCIDENT_INFORMATION);
@@ -66,6 +66,13 @@ public class Assert {
 			throw ErrorFactory.getError(Errors.REQUIRED_INCIDENT_TAGS);
 		else
 			return true;
+	}
+
+	public static boolean areTagsValid(String ident) {
+		if (!ident.matches("[a-zA-Z0-9]*(,|[a-zA-Z0-9])+")) {
+			throw ErrorFactory.getError(Errors.WRONG_INCIDENT_TAGS);
+		}
+		return true;
 	}
 
 }

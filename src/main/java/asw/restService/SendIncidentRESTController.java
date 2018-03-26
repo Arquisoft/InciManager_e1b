@@ -44,6 +44,8 @@ public class SendIncidentRESTController {
 		Assert.isIncidentNotificationEmpty(incidenceData.getNotification());
 		Assert.isIncidentExpirationEmpty(incidenceData.getExpiration());
 		Assert.isIncidentAssignedToEmpty(incidenceData.getAssignedTo());
+		
+		Assert.areTagsValid(incidenceData.getTags());
 
 		Incidence incidence = new Incidence();
 

@@ -114,7 +114,7 @@ public class MainTest {
 	}
 	
 	@Test
-	public void T3emptyIncidentTagsEmpty() {
+	public void T3emptyIncidentTags() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		String incidenceURI = base.toString() + "/postIncident";
 		String emptyName = "{\"reason\": \"Incidence tags is required\"}";
@@ -131,7 +131,7 @@ public class MainTest {
 	}
 	
 	@Test
-	public void T4emptyIncidentInformationEmpty() {
+	public void T4emptyIncidentInformation() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		String incidenceURI = base.toString() + "/postIncident";
 		String emptyName = "{\"reason\": \"Incidence additional information is required\"}";
@@ -148,7 +148,7 @@ public class MainTest {
 	}
 	
 	@Test
-	public void T5emptyIncidentPropertiesEmpty() {
+	public void T5emptyIncidentProperties() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		String incidenceURI = base.toString() + "/postIncident";
 		String emptyName = "{\"reason\": \"Incidence properties is required\"}";
@@ -165,7 +165,7 @@ public class MainTest {
 	}
 	
 	@Test
-	public void T6emptyIncidentStateEmpty() {
+	public void T6emptyIncidentState() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		String incidenceURI = base.toString() + "/postIncident";
 		String emptyName = "{\"reason\": \"Incidence state is required\"}";
@@ -182,7 +182,7 @@ public class MainTest {
 
 	
 	@Test
-	public void T7emptyIncidentNotificationEmpty() {
+	public void T7emptyIncidentNotification() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		String incidenceURI = base.toString() + "/postIncident";
 		String emptyName = "{\"reason\": \"Incidence notification is required\"}";
@@ -198,7 +198,7 @@ public class MainTest {
 	}
 	
 	@Test
-	public void T8emptyIncidentExpirationEmpty() {
+	public void T8emptyIncidentExpiration() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		String incidenceURI = base.toString() + "/postIncident";
 		String emptyName = "{\"reason\": \"Incidence expiration is required\"}";
@@ -215,7 +215,7 @@ public class MainTest {
 
 	
 	@Test
-	public void T9emptyIncidentAssignedToEmpty() {
+	public void T9emptyIncidentAssignedTo() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		String incidenceURI = base.toString() + "/postIncident";
 		String emptyName = "{\"reason\": \"Incidence assigned to is required\"}";
@@ -229,4 +229,22 @@ public class MainTest {
 		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
 		assertThat(response.getBody(), equalTo(emptyName));
 	}
+	
+	@Test
+	public void T10worngTagsStyle() {
+		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+		String incidenceURI = base.toString() + "/postIncident";
+		String emptyName = "{\"reason\": \"Wrong tags style\"}";
+
+		incidenceData1.setTags("xsd , dxxs, xs");
+		incidenceData2.setTags("xsd dxxs, xs");
+
+		response = template.postForEntity(incidenceURI, incidenceData1, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+
+		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+	}
+	
+	
 }
