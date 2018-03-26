@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-
-
 import asw.Incidence;
 import asw.kafka.KafkaServiceImpl;
 import asw.webService.IncidenceData;
@@ -36,6 +33,7 @@ public class RESTController {
 	@RequestMapping(value = "/incidence-creator", method = RequestMethod.POST, headers = { "Accept=application/json",
 	"Accept=application/xml" }, produces = { "application/json", "text/xml" })
 	public ResponseEntity<String> processIncidence(@RequestBody Map<String, Object> params) {
+
 		HttpResponse auth;
 		try {
 			auth = agentsConnector.launchRequest( new AgentLoginFormatter(params).getLoginAsJSON() );
@@ -49,7 +47,6 @@ public class RESTController {
 		}
 		
 
-		
 		Incidence incidence = new Incidence();
 
 		incidence.setUsername((String) params.get("ident"));
@@ -57,9 +54,11 @@ public class RESTController {
 		incidence.setName((String) params.get("name"));
 		incidence.setDescription((String) params.get("description"));
 		incidence.setLocation((String) params.get("location"));
+
 		incidence.setTags((List<String>) params.get("tags"));
 		incidence.setAdditionalInformation((String) params.get("additionalInformation"));
 		incidence.setProperties((Map<String, String>) params.get("properties"));
+
 		incidence.setState((String) params.get("state"));
 		incidence.setNotification((String) params.get("notification"));
 		incidence.setExpiration((String) params.get("expireAt"));
