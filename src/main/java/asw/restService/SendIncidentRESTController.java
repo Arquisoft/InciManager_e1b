@@ -26,7 +26,7 @@ public class SendIncidentRESTController {
 
 	@Autowired
 	AgentsConnector agentsConnector;
-	
+
 	@Autowired
 	KafkaServiceImpl kafkaManager;
 
@@ -38,38 +38,57 @@ public class SendIncidentRESTController {
 
 		Incidence incidence = new Incidence();
 
-		incidence.setUsername(agentsConnector.getUsername());
-		incidence.setPassword(agentsConnector.getPassword());
-		incidence.setName(incidenceData.getName());
-		incidence.setDescription(incidenceData.getDescription());
+		String username = agentsConnector.getUsername();
+		String password = agentsConnector.getPassword();
+		String name = incidenceData.getName();
+		String description = incidenceData.getDescription();
+		String location;
+		String tagsS = incidenceData.getTags();
+		String aI = incidenceData.getAdditionalInformation();
+		String propertiesS = incidenceData.getProperties();
+		String state = incidenceData.getState();
+		String noti = incidenceData.getNotification();
+		String exp = incidenceData.getExpiration();
+		String assig = incidenceData.getAssignedTo();
 
-		if (incidenceData.getLocation() == "")
+		incidence.setUsername(username);
+		incidence.setPassword(password);
+		incidence.setName(name);
+		incidence.setDescription(description);
+
+		if (incidenceData.getLocation() == "") {
 			incidence.setLocation(agentsConnector.getLocation());
-		else
+			location = agentsConnector.getLocation();
+		} else {
 			incidence.setLocation(incidenceData.getLocation());
+			location = incidenceData.getLocation();
+		}
 
 		List<String> tags = new ArrayList<String>();
-		for (String tag : ((String) incidenceData.getTags()).split(",")) {
+		for (String tag : ((String) tagsS).split(",")) {
 			tags.add(tag.trim());
 		}
 		incidence.setTags(tags);
 
-		incidence.setAdditionalInformation(incidenceData.getAdditionalInformation());
+		incidence.setAdditionalInformation(aI);
 
 		Map<String, String> properties = new HashMap<String, String>();
-		for (String property : ((String) incidenceData.getProperties()).split(",")) {
+		for (String property : ((String) propertiesS).split(",")) {
 			if (property.split(":").length == 2)
 				properties.put(property.split(":")[0].trim(), property.split(":")[1].trim());
 		}
 		incidence.setProperties(properties);
 
-		incidence.setState(incidenceData.getState());
-		incidence.setNotification(incidenceData.getNotification());
-		incidence.setExpiration(incidenceData.getExpiration());
-		incidence.setAssignedTo(incidenceData.getAssignedTo());
+		incidence.setState(state);
+		incidence.setNotification(noti);
+		incidence.setExpiration(exp);
+		incidence.setAssignedTo(assig);
 
 		kafkaManager.sendInci(incidence);
-		return new ResponseEntity<IncidenceData>(new IncidenceData(incidenceData), HttpStatus.OK);
+
+		return new ResponseEntity<IncidenceData>(
+				new IncidenceData(username,password,name, description, location, tagsS, aI, propertiesS, state, noti, exp, assig),
+				HttpStatus.OK);
 	}
 
 	@ExceptionHandler(ErrorResponse.class)

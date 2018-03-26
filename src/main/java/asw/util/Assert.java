@@ -12,4 +12,60 @@ public class Assert {
 			return true;
 	}
 
+	public static boolean isIncidentAssignedToEmpty(String assignedTo) {
+		if (assignedTo.trim().isEmpty())
+			throw ErrorFactory.getError(Errors.REQUIRED_INCIDENT_ASSIGNEDTO);
+		else
+			return true;
+	}
+
+	public static boolean isIncidentDescriptionEmpty(String description) {
+		if (description.trim().isEmpty())
+			throw ErrorFactory.getError(Errors.REQUIRED_INCIDENT_DESCRIPTION);
+		else
+			return true;
+	}
+
+	public static boolean isIncidentExpirationEmpty(String expiration) {
+		if (expiration.trim().isEmpty())
+			throw ErrorFactory.getError(Errors.REQUIRED_INCIDENT_EXPIRATION);
+		else
+			return true;
+	}
+	
+	public static boolean isIncidentInfomationEmpty(String information) {
+		if (information.trim().isEmpty())
+			throw ErrorFactory.getError(Errors.REQUIRED_INCIDENT_INFORMATION);
+		else
+			return true;
+	}
+
+	public static boolean isIncidentNotificationEmpty(String notification) {
+		if (notification.trim().isEmpty())
+			throw ErrorFactory.getError(Errors.REQUIRED_INCIDENT_NOTIFICATION);
+		else
+			return true;
+	}
+
+	public static boolean isIncidentPropertiesEmpty(String properties) {
+		if (properties.trim().isEmpty())
+			throw ErrorFactory.getError(Errors.REQUIRED_INCIDENT_PROPERTIES);
+		else
+			return true;
+	}
+
+	public static boolean isIncidentStateEmpty(String state) {
+		if (state.trim().isEmpty())
+			throw ErrorFactory.getError(Errors.REQUIRED_INCIDENT_STATE);
+		else
+			return true;
+	}
+
+	public static boolean isIncidentTagsEmpty(String tags) {
+		if (tags.trim().isEmpty())
+			throw ErrorFactory.getError(Errors.REQUIRED_INCIDENT_TAGS);
+		else
+			return true;
+	}
+
 }
