@@ -1,6 +1,6 @@
 package asw.dbManagement;
 
-import asw.Incidence;
+import asw.entities.Incidence;
 
 public interface Database {
 	

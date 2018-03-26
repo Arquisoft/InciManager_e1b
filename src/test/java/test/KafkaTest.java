@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import asw.Application;
-import asw.Incidence;
+import asw.entities.Incidence;
 import asw.kafkaManager.KafkaService;
 
 
