@@ -25,7 +25,7 @@ Este módulo forma parte de un sistema informático de análisis gestión de inc
 ```
 
 - **Librería para apache kafka**
-```
+```xml
 		<!-- https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka -->
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
@@ -35,7 +35,7 @@ Este módulo forma parte de un sistema informático de análisis gestión de inc
 ```
 
 - **Apache HTTP Components**
-```
+```xml
 		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
 		<dependency>
 	    		<groupId>org.apache.httpcomponents</groupId>
@@ -125,11 +125,11 @@ Situate en el directorio de apache kafka, abre dos terminales y ejecuta:
 
 En una:
 
-``` bin/zookeeper-server-start.sh config/zookeeper.properties ```
+```sh bin/zookeeper-server-start.sh config/zookeeper.properties ```
 
 En la otra:
 
-``` bin/kafka-server-start.sh config/server.properties ```
+```sh bin/kafka-server-start.sh config/server.properties ```
 
 **OJO**: Si usas windows la ruta cambia:
 ```bin``` por ```bin/windows``` y ```.sh``` por ```.bat```
@@ -139,7 +139,7 @@ En la otra:
 
 Abre dos terminales, en una situate en el directorio de Agents y en la otra en el directorio de InciManager. En ambas terminales ejecuta:
 
-``` mvn spring-boot:run ```
+```sh mvn spring-boot:run ```
 
 
 ### Generador de incidencias ####
@@ -151,7 +151,7 @@ Esta programado en ***Python 2.7*** y no tiene nada que ver con el proyecto, es 
 Esta genera los campos de la incidencia aleatoriamente y construye el objeto json que se enviará por parámetros al creador de incidencias.
 
 Se ejecuta de la siguiente forma:
-```
+```sh
 python2 generadorDeIncidencias.py n
 ```
 
