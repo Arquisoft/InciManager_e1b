@@ -3,7 +3,7 @@ package asw.dbManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import asw.Incidence;
+import asw.entities.Incidence;
 
 @Service
 public class MongoDatabase implements Database{

@@ -24,11 +24,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import asw.Incidence;
+import asw.entities.Incidence;
 import asw.kafkaManager.KafkaServiceImpl;
 import asw.restService.AgentLoginFormatter;
 
 import asw.restService.AgentsConnector;
+import asw.util.Assert;
 import asw.webService.errors.ErrorResponse;
 
 @Controller
@@ -75,6 +76,19 @@ public class WebController {
 
 	@RequestMapping(value = "/sendIncident", method = RequestMethod.POST)
 	public String createIncident(Model model, @ModelAttribute IncidenceData incidenceData) {
+		
+		Assert.isIncidentNameEmpty(incidenceData.getName());
+		Assert.isIncidentDescriptionEmpty(incidenceData.getDescription());
+		Assert.isIncidentTagsEmpty(incidenceData.getTags());
+		Assert.isIncidentInfomationEmpty(incidenceData.getAdditionalInformation());
+		Assert.isIncidentPropertiesEmpty(incidenceData.getProperties());
+		Assert.isIncidentStateEmpty(incidenceData.getState());
+		Assert.isIncidentNotificationEmpty(incidenceData.getNotification());
+		Assert.isIncidentExpirationEmpty(incidenceData.getExpiration());
+		Assert.isIncidentAssignedToEmpty(incidenceData.getAssignedTo());
+		
+		Assert.areTagsValid(incidenceData.getTags());
+		Assert.arePropertiesValid(incidenceData.getProperties());
 
 		Incidence incidence = new Incidence();
 
