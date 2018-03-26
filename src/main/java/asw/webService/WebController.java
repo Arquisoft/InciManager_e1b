@@ -83,8 +83,9 @@ public class WebController {
 		incidence.setName(incidenceData.getName());
 		incidence.setDescription(incidenceData.getDescription());
 		
-		if (incidenceData.getLocation() == "")
+		if (incidenceData.getLocation() == "") {
 			incidence.setLocation(agentsConnector.getLocation());
+		}
 		else
 			incidence.setLocation(incidenceData.getLocation());
 
