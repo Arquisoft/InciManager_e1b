@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Incidence Form</title>
+<link rel="stylesheet" type="text/css" href="static/formCss.css" />
+</head>
+<body>
+
+<div class="testbox">
+		<h1>Datos de la incidencia</h1>
+
+	<div class="sDatos">  
+		<form method="POST" action="sendIncident">
+			
+			<label for="name">Nombre de la incidencia:</label>
+			<input id="name" name="name" type="text" />
+			<br/><br/>
+			
+			<label for="name">Descripción:</label>
+			<input id="description" name="description" type="text" />
+			<br/><br/>
+			
+			<label for="name">Localización:</label>
+			<input id="location" name="location" type="text" />
+			<br/><br/>
+			
+			<label for="tags">Etiquetas:</label>
+			<input id="tags" name="tags" type="text" />
+			<br/><br/>
+			
+			<label for="additionalInformation">Información adicional:</label>
+			<input id="additionalInformation" name="additionalInformation" type="text" />
+			<br/><br/>
+			
+			<label for="properties">Propiedades:</label>
+			<input id="properties" name="properties" type="text" />
+			<br/><br/>
+			
+			<label for="state">Estado:</label>
+			<input id="state" name="state" type="text" />
+			<br/><br/>
+			
+			<label for="notification">Notificación:</label>
+			<input id="notification" name="notification" type="text" />
+			<br/><br/>
+			
+			<label for="expiration">Fecha de expiración:</label>
+			<input id="expiration" name="expiration" type="text" />
+			<br/><br/>
+			
+			<label for="assignedTo">Asignada a:</label>
+			<input id="assignedTo" name="assignedTo" type="text" />
+			<br/><br/>
+		
+			<button type="submit" id="sendButton">Enviar</button>
+		</form>
+	</div>
+	
+</div>
+
+
+</body>
+</html>
