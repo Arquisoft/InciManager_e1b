@@ -44,8 +44,9 @@ public class SendIncidentRESTController {
 		Assert.isIncidentNotificationEmpty(incidenceData.getNotification());
 		Assert.isIncidentExpirationEmpty(incidenceData.getExpiration());
 		Assert.isIncidentAssignedToEmpty(incidenceData.getAssignedTo());
-		
+
 		Assert.areTagsValid(incidenceData.getTags());
+		Assert.arePropertiesValid(incidenceData.getProperties());
 
 		Incidence incidence = new Incidence();
 
@@ -97,9 +98,8 @@ public class SendIncidentRESTController {
 
 		kafkaManager.sendInci(incidence);
 
-		return new ResponseEntity<IncidenceData>(
-				new IncidenceData(username,password,name, description, location, tagsS, aI, propertiesS, state, noti, exp, assig),
-				HttpStatus.OK);
+		return new ResponseEntity<IncidenceData>(new IncidenceData(username, password, name, description, location,
+				tagsS, aI, propertiesS, state, noti, exp, assig), HttpStatus.OK);
 	}
 
 	@ExceptionHandler(ErrorResponse.class)
@@ -109,4 +109,3 @@ public class SendIncidentRESTController {
 	}
 
 }
-

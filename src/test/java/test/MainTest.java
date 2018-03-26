@@ -67,7 +67,7 @@ public class MainTest {
 		name = "Incendio";
 		description = "Incendio muy grande";
 		location = "Salinas";
-		tags = "asd:edf";
+		tags = "asd,edf";
 		state = "OPEN";
 		notification = "yes";
 		expireAt = "today";
@@ -94,8 +94,7 @@ public class MainTest {
 		assertThat(response.getBody(), equalTo(emptyName));
 
 	}
-	
-	
+
 	@Test
 	public void T2emptyIncidentDescription() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
@@ -112,7 +111,7 @@ public class MainTest {
 		assertThat(response.getBody(), equalTo(emptyName));
 
 	}
-	
+
 	@Test
 	public void T3emptyIncidentTags() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
@@ -129,7 +128,7 @@ public class MainTest {
 		assertThat(response.getBody(), equalTo(emptyName));
 
 	}
-	
+
 	@Test
 	public void T4emptyIncidentInformation() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
@@ -146,7 +145,7 @@ public class MainTest {
 		assertThat(response.getBody(), equalTo(emptyName));
 
 	}
-	
+
 	@Test
 	public void T5emptyIncidentProperties() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
@@ -163,7 +162,7 @@ public class MainTest {
 		assertThat(response.getBody(), equalTo(emptyName));
 
 	}
-	
+
 	@Test
 	public void T6emptyIncidentState() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
@@ -180,7 +179,6 @@ public class MainTest {
 		assertThat(response.getBody(), equalTo(emptyName));
 	}
 
-	
 	@Test
 	public void T7emptyIncidentNotification() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
@@ -196,7 +194,7 @@ public class MainTest {
 		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
 		assertThat(response.getBody(), equalTo(emptyName));
 	}
-	
+
 	@Test
 	public void T8emptyIncidentExpiration() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
@@ -213,7 +211,6 @@ public class MainTest {
 		assertThat(response.getBody(), equalTo(emptyName));
 	}
 
-	
 	@Test
 	public void T9emptyIncidentAssignedTo() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
@@ -229,7 +226,7 @@ public class MainTest {
 		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
 		assertThat(response.getBody(), equalTo(emptyName));
 	}
-	
+
 	@Test
 	public void T10worngTagsStyle() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
@@ -245,6 +242,35 @@ public class MainTest {
 		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
 		assertThat(response.getBody(), equalTo(emptyName));
 	}
-	
-	
+
+	@Test
+	public void T11worngPropertiesStyle() {
+		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+		String incidenceURI = base.toString() + "/postIncident";
+		String emptyName = "{\"reason\": \"Wrong properties style\"}";
+
+		incidenceData1.setProperties("cdsc,vale:xsa");
+		incidenceData2.setProperties("xas,xsx ,val:sxa");
+
+		response = template.postForEntity(incidenceURI, incidenceData1, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+
+		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+	}
+
+	@Test
+	public void T12AcceptIncident() {
+		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+		String incidenceURI = base.toString() + "/postIncident";
+		String request1 = "{\"username\":null,\"password\":null,\"name\":\"FUGA GAS\",\"description\":\"Fuga de gas cocina\",\"location\":\"gijon\",\"tags\":\"bombona,gas\",\"additionalInformation\":\"Butano\",\"properties\":\"bombona:butano\",\"state\":\"OPEN\",\"notification\":\"yes\",\"expiration\":\"tomorrowland\",\"assignedTo\":\"x\"}";
+		String request2 = "{\"username\":null,\"password\":null,\"name\":\"Incendio\",\"description\":\"Incendio muy grande\",\"location\":\"Salinas\",\"tags\":\"asd,edf\",\"additionalInformation\":\"Butano\",\"properties\":\"bombona:butano\",\"state\":\"OPEN\",\"notification\":\"yes\",\"expiration\":\"today\",\"assignedTo\":\"x\"}";
+
+		response = template.postForEntity(incidenceURI, incidenceData1, String.class);
+		assertThat(response.getBody(), equalTo(request1));
+
+		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
+		assertThat(response.getBody(), equalTo(request2));
+	}
+
 }

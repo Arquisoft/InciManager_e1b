@@ -88,6 +88,7 @@ public class WebController {
 		Assert.isIncidentAssignedToEmpty(incidenceData.getAssignedTo());
 		
 		Assert.areTagsValid(incidenceData.getTags());
+		Assert.arePropertiesValid(incidenceData.getProperties());
 
 		Incidence incidence = new Incidence();
 

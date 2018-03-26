@@ -75,4 +75,11 @@ public class Assert {
 		return true;
 	}
 
+	public static boolean arePropertiesValid(String ident) {
+		if (!ident.matches("([a-zA-Z0-9]*:[a-zA-Z0-9]*)(,|[a-zA-Z0-9]*:[a-zA-Z0-9]*)*")) {
+			throw ErrorFactory.getError(Errors.WRONG_INCIDENT_PROPERTIES);
+		}
+		return true;
+	}
+
 }
