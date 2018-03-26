@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import asw.Application;
 import asw.Incidence;
-import asw.kafka.KafkaService;
+import asw.kafkaManager.KafkaService;
 
 
 @SpringBootTest(classes = { Application.class})
