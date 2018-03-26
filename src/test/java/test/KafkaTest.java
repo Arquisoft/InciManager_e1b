@@ -35,7 +35,7 @@ public class KafkaTest {
 
 		String name= "FUGA GAS";
 		String description = "Fuga de gas cocina";
-		String location = "gijon";
+		String location = "-20,20";
 		List<String> tags = new LinkedList<String>();
 		tags.add("gas");
 		tags.add("fuga");
@@ -44,7 +44,7 @@ public class KafkaTest {
 		properties.put("Bombona", "butano");
 		String state="OPEN";
 		String notification = "yes";
-		String expireAt = new Date().toString();
+		String expireAt = "2018-10-25 10:03:29.76579";
 		String assignedTo = "x";
 		
 		incidence = new Incidence(username, password, name, description, location,
@@ -58,3 +58,4 @@ public class KafkaTest {
 		kafkaService.sendInci(incidence);
 	}
 }
+
