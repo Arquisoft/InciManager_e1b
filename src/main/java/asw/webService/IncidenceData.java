@@ -15,6 +15,28 @@ public class IncidenceData {
 	private String expiration;
 	private String assignedTo;
 
+	public IncidenceData() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public IncidenceData(String username, String password, String name, String description, String location,
+			String tags, String additionalInformation, String properties, String state, String notification,
+			String expiration, String assignedTo) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.description = description;
+		this.location = location;
+		this.tags = tags;
+		this.additionalInformation = additionalInformation;
+		this.properties = properties;
+		this.state = state;
+		this.notification = notification;
+		this.expiration = expiration;
+		this.assignedTo = assignedTo;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -58,7 +80,7 @@ public class IncidenceData {
 	public String getAssignedTo() {
 		return assignedTo;
 	}
-	
+
 	public String getNotification() {
 		return notification;
 	}

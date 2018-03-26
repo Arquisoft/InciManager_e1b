@@ -58,3 +58,4 @@ public class KafkaTest {
 		kafkaService.sendInci(incidence);
 	}
 }
+
