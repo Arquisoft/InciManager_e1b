@@ -3,6 +3,8 @@ jdk:
 - oraclejdk8
 after_success:
 - bash <(curl -s https://codecov.io/bash)
+- nohup bash -c "cd kafka && bin/kafka-server-stop.sh config/server.properties &"
+- nohup bash -c "cd kafka && bin/zookeeper-server-stop.sh config/zookeeper.properties &"
 before_script:
 - "export DISPLAY=:99.0"
 - "sh -e /etc/init.d/xvfb start"
