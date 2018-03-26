@@ -62,7 +62,7 @@ def incDescriptionRandomizer():
     return incDescriptions[random.randint(0, len(incDescriptions)-1)]
 
 def incLocalizationRandomizer():
-    a, b = random.randint(-99, 100, random.randint(-90 100)
+    a, b = random.randint(-99, 100, random.randint(-90 100))
     return '%d,%d' % (a, b)
 
 incOperarioRandomizer = lambda n: 'oper_' + ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits+ string.ascii_uppercase) for _ in range(n))
