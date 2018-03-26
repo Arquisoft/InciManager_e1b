@@ -70,9 +70,8 @@ public class WebController {
 		incidence.setPassword(agentsConnector.getPassword());
 		incidence.setName(incidenceData.getName());
 		incidence.setDescription(incidenceData.getDescription());
-		
-		
-		if(incidenceData.getLocation() == "")
+
+		if (incidenceData.getLocation() == "")
 			incidence.setLocation(agentsConnector.getLocation());
 		else
 			incidence.setLocation(incidenceData.getLocation());
@@ -102,6 +101,11 @@ public class WebController {
 		model.addAttribute("incidence", incidenceData);
 
 		return "incidentDetails";
+	}
+
+	@RequestMapping(value = "/resendIncident", method = RequestMethod.POST)
+	public String resendIncident() {
+		return "incidentForm";
 	}
 
 	@ExceptionHandler(ErrorResponse.class)

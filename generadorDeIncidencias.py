@@ -61,7 +61,7 @@ def incDescriptionRandomizer():
 
 def incLocalizationRandomizer():
     a, b = random.randint(-9999, 10000), random.randint(-9999, 10000)
-    return '%d.%d' % (a, b)
+    return '%d,%d' % (a, b)
 
 incOperarioRandomizer = lambda n: 'oper_' + ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits+ string.ascii_uppercase) for _ in range(n))
 
@@ -75,7 +75,7 @@ def incStateRandomizer():
 def incTagsRandomizer(n):
     incTags = ["Lluvia", "Fuego", "Nieve", "Niebla", "Terremoto", "Inundacion"]
     a = lambda: incTags[random.randint(0, len(incTags)-1)]
-    return ",".join([a() for x in range(n)])
+    return "[" + ",".join(['"'+a()+'"' for x in range(n)]) + "]"
 
 def incMultimediaRandomizer():
     return "http://puntoverdeleon.com.mx/wp-content/uploads/2016/09/imagen-de-prueba-320x240.jpg"
@@ -87,30 +87,30 @@ def incPropertiesRandomizer(n):
 def generateRandomIncidence():
     jsonResult = '''
 {
-    "ident":"%s",
-    "password":"%s",
-    "kind":%d,
-    "incidencia":{
-        "nombreIncidencia":"%s",
-        "descripcion":"%s",
-        "localizacion":"%s",
-        "operario":"%s",
-        "fechaCaducidad":"%s",
-        "estado":"%s",
-        "etiquetas":"%s",
-        "informacion":"%s",
-        "propiedades":{
-            %s
-         }
-     }
+  "ident":"%s",
+  "password":"%s",
+  "kind":%d,
+  "name":"%s",
+  "description":"%s",
+  "location":"%s",
+  "tags":%s,
+  "additionalInformation":"%s",
+  "properties":{
+    %s
+  },
+  "state":"%s",
+  "notification":"si",
+  "expireAt":"%s",
+  "assignedTo":"%s"
 }
     '''
 
     agent = getRandomAgent()
     return (jsonResult % (agent["ident"], agent["password"], agent["kind"],
                         incNameRandomizer(4), incDescriptionRandomizer(), incLocalizationRandomizer(),
-                        incOperarioRandomizer(4), incExpirationDateRandomizer(), incStateRandomizer(),
-                        incTagsRandomizer(4), incMultimediaRandomizer(), incPropertiesRandomizer(4))).strip()
+                        incTagsRandomizer(4), incMultimediaRandomizer(), incPropertiesRandomizer(4),
+                        incStateRandomizer(), incExpirationDateRandomizer(), incOperarioRandomizer(4))).strip()
+
 
 """
 Send randomized incidences to an endpoint
@@ -127,3 +127,4 @@ sendIncidences = lambda n, inc: [sendIncidence(inc) for x in range(n)]
 
 if '__main__':
     print sendIncidences(10, generateRandomIncidence())
+    #print generateRandomIncidence()

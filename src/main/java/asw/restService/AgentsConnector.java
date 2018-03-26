@@ -15,6 +15,8 @@ public class AgentsConnector {
 	private String password;
 	private String location;
 
+	
+	//Method extracted from: https://github.com/Arquisoft/InciManager_i3a/blob/master/src/main/java/org/uniovi/i3a/incimanager/rest/AgentsConnection.java
 	public HttpResponse<JsonNode> executeQuery(String query) {
 		try {
 			HttpResponse<JsonNode> jsonResponse = Unirest.post(URL).header("Content-Type", "application/json")

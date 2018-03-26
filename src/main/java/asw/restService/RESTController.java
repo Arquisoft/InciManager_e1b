@@ -55,30 +55,14 @@ public class RESTController {
 		incidence.setName((String) params.get("name"));
 		incidence.setDescription((String) params.get("description"));
 		incidence.setLocation((String) params.get("location"));
-
-		//List<String> tags = new ArrayList<String>();
-//		String[] aux = ((String) params.get("tags")).split(":")[1].replace("[", "").replace("]", "").replace("\"", "").split(",");
-//
-//		for (String tag :aux) {
-//			tags.add(tag.trim());
-//		}
 		incidence.setTags((List<String>) params.get("tags"));
-		
-		
-		
-
 		incidence.setAdditionalInformation((String) params.get("additionalInformation"));
-
-		//Map<String, String> properties = new HashMap<String, String>();
-		//String auxxx = params.get("properties");
 		incidence.setProperties((Map<String, String>) params.get("properties"));
-
-		
-
 		incidence.setState((String) params.get("state"));
+		incidence.setNotification((String) params.get("notification"));
 		incidence.setExpiration((String) params.get("expireAt"));
 		incidence.setAssignedTo((String) params.get("assignedTo"));
-
+		
 		kafkaManager.sendInci(incidence);
 		
 		//Enviar el objeto con la informacion de la incidencia a kafka y al mongo
