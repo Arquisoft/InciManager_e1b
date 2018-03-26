@@ -13,8 +13,8 @@ import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
-import asw.Incidence;
 import asw.dbManagement.MongoDatabase;
+import asw.entities.Incidence;
 
 @ManagedBean
 public class KafkaServiceImpl implements KafkaService {
