@@ -162,6 +162,6 @@ Se ejecuta de la siguiente forma:
 python2 generadorDeIncidencias.py n
 ```
 
-Donde ***n*** es el número de incidencias a generar. Hay que tener en cuenta que estamos trabajando con una base de datos MongoDB alojada de forma remota en **mlab.com** por lo que no conviene propasarse con el número de incidencias a enviar, ya que por lo que he estado probando le cuesta un poco enviar grandes cantidades de incidencias, tal vez lo mejor sería establecer algún timer, porque lo más seguro es que el culpable de que no se lleguen a almacenar todas las incidencias generadas, sea el hosting, que nos restringe por ser un "***robot***"
+Donde ***n*** es el número de incidencias a generar. Hay que tener en cuenta que estamos trabajando con una base de datos MongoDB alojada de forma remota en **mlab.com** por lo que no conviene propasarse con el número de incidencias a enviar, ya que es un hosting gratuito y el tamaño máximo que nos dejan alojar son 500MB y tendrá un ancho de banda limitado.
 
 El aspecto de una incidencia autogenerada tiene el aspecto del JSON mostrado al principio del readme.
