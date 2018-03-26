@@ -165,16 +165,3 @@ python2 generadorDeIncidencias.py n
 Donde ***n*** es el número de incidencias a generar. Hay que tener en cuenta que estamos trabajando con una base de datos MongoDB alojada de forma remota en **mlab.com** por lo que no conviene propasarse con el número de incidencias a enviar, ya que por lo que he estado probando le cuesta un poco enviar grandes cantidades de incidencias, tal vez lo mejor sería establecer algún timer, porque lo más seguro es que el culpable de que no se lleguen a almacenar todas las incidencias generadas, sea el hosting, que nos restringe por ser un "***robot***"
 
 El aspecto de una incidencia autogenerada tiene el aspecto del JSON mostrado al principio del readme.
-
-=======
-# InciManagement_e1b
-**Bienvenidos a nuestro módulo InciManagement**
- 
-Este módulo forma parte de un sistema informático de análisis y gestión de incidencias, el cual se encarga de la gestión y de la carga de incidencias.
-
-## Autores (2017/2018)
-- [Esteban Montes Morales](https://github.com/sankosk)
-- [Lucía de la Granda Prieto](https://github.com/luciadelagranda)
-- [Pablo Menéndez Suárez](https://github.com/mistermboy)
-- [Sara Grimaldos Rodríguez](https://github.com/saritagrimal2)
-
