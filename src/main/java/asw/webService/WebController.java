@@ -43,7 +43,12 @@ public class WebController {
 
 	@RequestMapping(value = "/")
 	public String index() {
-		return "login";
+		return "index";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Model model) {
+	    return "login";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -140,6 +145,11 @@ public class WebController {
 		model.addAttribute("error", excep.getMessageStringFormat());
 
 		return "error";
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(Model model) {
+	    return "index";
 	}
 
 }
