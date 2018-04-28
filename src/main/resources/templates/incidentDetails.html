@@ -8,21 +8,7 @@
 	<div class="container">
 		<h2>Incidencia procesada</h2>
 
-		<form method="POST" action="resendIncident">
-		
-			
-				<ul>
-				<li th:text="${'Nombre de la incidencia:' + incidence.name}"></li>
-				<li th:text="${'Descripción:' + incidence.description}"></li>
-				<li th:text="${'Localización:' + incidence.location}"></li>
-				<li th:text="${'Etiquetas:' + incidence.tags}"></li>
-				<li th:text="${'Información adicional:' + incidence.additionalInformation}"></li>
-				<li th:text="${'Propiedades:' + incidence.properties}"></li>
-				<li th:text="${'Estado:' + incidence.state}"></li>
-				<li th:text="${'Notificación:' + incidence.notification}"></li>
-				<li th:text="${'Fecha de expiration:' + incidence.expiration}"></li>
-				<li th:text="${'Asignada a:' + incidence.assignedTo}"></li>
-			</ul>
+		<form class="form-horizontal" method="POST" action="resendIncident">
 
 			<div class="panel panel-default">
 				<div class="panel-heading">Nombre de la incidencia</div>
@@ -33,61 +19,45 @@
 				<div class="panel-body" th:text="${incidence.description}"></div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">Nombre de la incidencia:</div>
-				<div class="panel-body" th:text="${incidence.name}"></div>
+				<div class="panel-heading">Localizacion</div>
+				<div class="panel-body" th:text="${incidence.location}"></div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">Nombre de la incidencia:</div>
-				<div class="panel-body" th:text="${incidence.name}"></div>
+				<div class="panel-heading">Etiquetas</div>
+				<div class="panel-body" th:text="${incidence.tags}"></div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">Nombre de la incidencia:</div>
-				<div class="panel-body" th:text="${incidence.name}"></div>
+				<div class="panel-heading">Informacion adicional</div>
+				<div class="panel-body" th:text="${incidence.additionalInformation}"></div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">Nombre de la incidencia:</div>
-				<div class="panel-body" th:text="${incidence.name}"></div>
+				<div class="panel-heading">Propiedades</div>
+				<div class="panel-body" th:text="${incidence.properties}"></div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">Nombre de la incidencia:</div>
-				<div class="panel-body" th:text="${incidence.name}"></div>
+				<div class="panel-heading">Estado</div>
+				<div class="panel-body" th:text="${incidence.state}"></div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">Nombre de la incidencia:</div>
-				<div class="panel-body" th:text="${incidence.name}"></div>
+				<div class="panel-heading">Notificacion</div>
+				<div class="panel-body" th:text="${incidence.notification}"></div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">Nombre de la incidencia:</div>
-				<div class="panel-body" th:text="${incidence.name}"></div>
+				<div class="panel-heading">Fecha de expiracion</div>
+				<div class="panel-body" th:text="${incidence.expiration}"></div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">Nombre de la incidencia:</div>
-				<div class="panel-body" th:text="${incidence.name}"></div>
+				<div class="panel-heading">Asignada a</div>
+				<div class="panel-body" th:text="${incidence.assignedTo}"></div>
 			</div>
 
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-primary">Enviar otra
-				incidencia</button>
+						incidencia</button>
 				</div>
 			</div>
-		
-		
-		
-		
-				
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
 
 
 		</form>
