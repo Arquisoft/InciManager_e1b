@@ -5,8 +5,8 @@ Scenario: Login
 
     Given a list of users:
       | name    | password |
-      | pepe    | pepe12   |
-      | luis    | siul     |
-      | mari    | mmm      |
-    When I login with name "luis" and password "siul"
+      | 12345678P    | 123456   |
+      | sensor1    | 123456     |
+      | 12345678A    | 123456      |
+    When I login with name "12345678P" and password "123456"
     Then I receive a welcome message
