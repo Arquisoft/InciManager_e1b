@@ -1,35 +1,98 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta charset="UTF-8" />
-<title>Incidence Form</title>
-<link rel="stylesheet" type="text/css" href="static/detailsCss.css" />
-</head>
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head" />
 <body>
-	
-	<div class="sDatos"> 
-		<form method="POST" action="resendIncident">
-		<h1> Incidencia procesada </h1>
-        <ul>
-        
-            <li th:text="${'Nombre de la incidencia:' + incidence.name}"></li>
-            <li th:text="${'Descripci贸n:' + incidence.description}"></li>
-            <li th:text="${'Localizaci贸n:' + incidence.location}"></li>
-            <li th:text="${'Etiquetas:' + incidence.tags}"></li>
-            <li th:text="${'Informaci贸n adicional:' + incidence.additionalInformation}"></li>
-            <li th:text="${'Propiedades:' + incidence.properties}"></li>
-            <li th:text="${'Estado:' + incidence.state}"></li>
-            <li th:text="${'Notificaci贸n:' + incidence.notification}"></li>
-            <li th:text="${'Fecha de expiration:' + incidence.expiration}"></li>
-            <li th:text="${'Asignada a:' + incidence.assignedTo}"></li>
-            
-        </ul>
-		
-        	<button type="submit" id="resendButton">Enviar otra incidencia</button>
-        
-        </form>
-        
-	</div>
 
+	<nav th:replace="fragments/nav" />
+
+	<div class="container">
+		<h2>Incidencia procesada</h2>
+
+		<form method="POST" action="resendIncident">
+		
+			
+				<ul>
+				<li th:text="${'Nombre de la incidencia:' + incidence.name}"></li>
+				<li th:text="${'Descripci髇:' + incidence.description}"></li>
+				<li th:text="${'Localizaci髇:' + incidence.location}"></li>
+				<li th:text="${'Etiquetas:' + incidence.tags}"></li>
+				<li th:text="${'Informaci髇 adicional:' + incidence.additionalInformation}"></li>
+				<li th:text="${'Propiedades:' + incidence.properties}"></li>
+				<li th:text="${'Estado:' + incidence.state}"></li>
+				<li th:text="${'Notificaci髇:' + incidence.notification}"></li>
+				<li th:text="${'Fecha de expiration:' + incidence.expiration}"></li>
+				<li th:text="${'Asignada a:' + incidence.assignedTo}"></li>
+			</ul>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">Nombre de la incidencia</div>
+				<div class="panel-body" th:text="${incidence.name}"></div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Descripci髇</div>
+				<div class="panel-body" th:text="${incidence.description}"></div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Nombre de la incidencia:</div>
+				<div class="panel-body" th:text="${incidence.name}"></div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Nombre de la incidencia:</div>
+				<div class="panel-body" th:text="${incidence.name}"></div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Nombre de la incidencia:</div>
+				<div class="panel-body" th:text="${incidence.name}"></div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Nombre de la incidencia:</div>
+				<div class="panel-body" th:text="${incidence.name}"></div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Nombre de la incidencia:</div>
+				<div class="panel-body" th:text="${incidence.name}"></div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Nombre de la incidencia:</div>
+				<div class="panel-body" th:text="${incidence.name}"></div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Nombre de la incidencia:</div>
+				<div class="panel-body" th:text="${incidence.name}"></div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Nombre de la incidencia:</div>
+				<div class="panel-body" th:text="${incidence.name}"></div>
+			</div>
+
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Enviar otra
+				incidencia</button>
+				</div>
+			</div>
+		
+		
+		
+		
+				
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+
+
+		</form>
+
+	</div>
+	<footer th:replace="fragments/footer" />
 </body>
 </html>
