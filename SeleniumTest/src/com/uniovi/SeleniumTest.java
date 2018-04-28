@@ -1,10 +1,14 @@
 package com.uniovi;
 
-import static org.junit.Assert.*;
+
 
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.uniovi.pageObjects.PO_LoginView;
+import com.uniovi.pageObjects.PO_View;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -49,7 +53,8 @@ public class SeleniumTest {
 
 	@Test
 	public void A_TEST() {
-		
+		PO_LoginView.fillForm(driver, "12345678P", "123456");
+		PO_View.checkElement(driver, "text", "" );
 	}
 
 }

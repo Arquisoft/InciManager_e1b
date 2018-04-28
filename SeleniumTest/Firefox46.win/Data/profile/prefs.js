@@ -124,3 +124,9 @@ user_pref("storage.vacuum.last.places.sqlite", 1509101380);
 user_pref("toolkit.startup.last_success", 1519820136);
 user_pref("toolkit.telemetry.previousBuildID", "20160421124000");
 user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
