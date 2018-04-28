@@ -100,11 +100,6 @@
 			<artifactId>spring-kafka</artifactId>
 			<version>2.1.4.RELEASE</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-		</dependency>
 
 	</dependencies>
 
