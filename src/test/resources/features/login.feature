@@ -7,6 +7,6 @@ Scenario: Login
       | name    | password |
       | 12345678P    | 123456   |
       | sensor1    | 123456     |
-      | 12345678A    | 123456      |
+      | 12345678A    | 123456   |
     When I login with name "12345678P" and password "123456"
-    Then I receive a welcome message
+    Then I am redirected to the incident form
