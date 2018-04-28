@@ -50,11 +50,25 @@ public class SeleniumTest {
 	public void tearDown() throws Exception {
 		driver.manage().deleteAllCookies();
 	}
-
+	
+	//Probamos entrar correctamente
 	@Test
 	public void A_TEST() {
 		PO_LoginView.fillForm(driver, "12345678P", "123456");
-		PO_View.checkElement(driver, "text", "" );
+		PO_View.checkElement(driver, "text", "Nombre de la incidencia" );
 	}
-
+	
+	//Probamos a entrar con un usuario incorrecto
+	@Test
+	public void B_TEST() {
+		PO_LoginView.fillForm(driver, "123", "123456");
+		PO_View.checkElement(driver, "text", "Entrar" );
+	}
+	
+	//Probamos a entrar con una contraseña incorrecta
+	@Test
+	public void C_TEST() {
+		PO_LoginView.fillForm(driver, "12345678P", "13456asaqwe");
+		PO_View.checkElement(driver, "text", "Entrar" );
+	}
 }
