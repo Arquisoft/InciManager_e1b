@@ -147,5 +147,9 @@ public class WebController {
 		return "error";
 	}
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(Model model) {
+	    return "index";
+	}
 
 }

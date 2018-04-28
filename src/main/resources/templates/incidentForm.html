@@ -1,64 +1,98 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta charset="UTF-8" />
-<title>Incidence Form</title>
-<link rel="stylesheet" type="text/css" href="static/formCss.css" />
-</head>
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head" />
 <body>
 
-<div class="testbox">
-		<h1>Datos de la incidencia</h1>
+	<nav th:replace="fragments/nav" />
 
-	<div class="sDatos">  
-		<form method="POST" action="sendIncident">
-			
-			<label for="name">Nombre de la incidencia:</label>
-			<input id="name" name="name" type="text" />
-			<br/><br/>
-			
-			<label for="name">Descripción:</label>
-			<input id="description" name="description" type="text" />
-			<br/><br/>
-			
-			<label for="name">Localización:</label>
-			<input id="location" name="location" type="text" />
-			<br/><br/>
-			
-			<label for="tags">Etiquetas:</label>
-			<input id="tags" name="tags" type="text" />
-			<br/><br/>
-			
-			<label for="additionalInformation">Información adicional:</label>
-			<input id="additionalInformation" name="additionalInformation" type="text" />
-			<br/><br/>
-			
-			<label for="properties">Propiedades:</label>
-			<input id="properties" name="properties" type="text" />
-			<br/><br/>
-			
-			<label for="state">Estado:</label>
-			<input id="state" name="state" type="text" />
-			<br/><br/>
-			
-			<label for="notification">Notificación:</label>
-			<input id="notification" name="notification" type="text" />
-			<br/><br/>
-			
-			<label for="expiration">Fecha de expiración:</label>
-			<input id="expiration" name="expiration" type="text" />
-			<br/><br/>
-			
-			<label for="assignedTo">Asignada a:</label>
-			<input id="assignedTo" name="assignedTo" type="text" />
-			<br/><br/>
-		
-			<button type="submit" id="sendButton">Enviar</button>
+
+	<div class="container">
+		<h2>Datos de la incidencia</h2>
+
+		<form class="form-horizontal" method="post" action="/sendIncident">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="name">Nombre de
+					la incidencia:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="name"
+						placeholder="inc_GHKB" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="description">Descripcion:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="description"
+						placeholder="Nueva lectura de humedad" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="location">Localizacion:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="location"
+						placeholder="2919,178" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="tags">Etiquetas:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="tags"
+						placeholder="Nieve,Fuego,Niebla" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="additionalInformation">Informacion
+					adicional:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control"
+						name="additionalInformation"
+						placeholder="http://puntoverdeleon.com.mx/imagen-de-prueba-320x240.jpg"
+						required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="properties">Propiedades:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="properties"
+						placeholder="p0:v0,p1:v1,p2:v2" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="state">Estado:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="state"
+						placeholder="Abierta" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="notification">Notificaciones:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="notification"
+						placeholder="Si" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="expireAt">Caducidad:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="expireAt"
+						placeholder="2018-10-25 10:02:29.769579" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="assignedTo">Asignada:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="assignedTo"
+						placeholder="oper_rUxl" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Enviar</button>
+				</div>
+			</div>
 		</form>
+
 	</div>
-	
-</div>
 
-
+	<footer th:replace="fragments/footer" />
 </body>
 </html>
