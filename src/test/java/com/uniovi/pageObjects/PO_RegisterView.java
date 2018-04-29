@@ -17,7 +17,7 @@ public class PO_RegisterView extends PO_NavView {
 		description.click();
 		description.clear();
 		description.sendKeys(descriptionp);
-		WebElement location = driver.findElement(By.name("locationp"));
+		WebElement location = driver.findElement(By.name("location"));
 		location.click();
 		location.clear();
 		location.sendKeys(locationp);
@@ -51,7 +51,7 @@ public class PO_RegisterView extends PO_NavView {
 		assignedTo.sendKeys(assignedTop);
 		
 		// Pulsar el boton de Alta.
-		By boton = By.className("btn btn-primary");
+		By boton = By.name("btn");
 		driver.findElement(boton).click();
 	}
 }

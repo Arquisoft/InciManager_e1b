@@ -6,6 +6,7 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.uniovi.pageObjects.PO_HomeView;
 import com.uniovi.pageObjects.PO_LoginView;
 import com.uniovi.pageObjects.PO_RegisterView;
 import com.uniovi.pageObjects.PO_View;
@@ -56,6 +57,7 @@ public class SeleniumTest {
 	//Probamos a entrar con un usuario incorrecto
 	@Test
 	public void A_TEST() {
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "123", "123456");
 		PO_View.checkElement(driver, "text", "Entrar" );
 	}
@@ -63,6 +65,7 @@ public class SeleniumTest {
 	//Probamos a entrar con una contraseña incorrecta
 	@Test
 	public void B_TEST() {
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "12345678P", "13456asaqwe");
 		PO_View.checkElement(driver, "text", "Entrar" );
 	}
@@ -70,17 +73,41 @@ public class SeleniumTest {
 	//Probamos entrar correctamente
 	@Test
 	public void C_TEST() {
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "12345678P", "123456");
-		PO_View.checkElement(driver, "text", "Nombre de la incidencia" );
+		PO_View.checkElement(driver, "text", "Enviar" );
 	}
 		
 	//Probamos a registrar una incidencia
 	@Test
 	public void D_TEST() {
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "12345678P", "123456");
-		PO_View.checkElement(driver, "text", "Nombre de la incidencia" );
+		PO_View.checkElement(driver, "text", "Enviar" );
+
+		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "40,-40", 
+				"humedad1,humedad2", "www.humedad.com", "P0:r1", "OPEN", "Si", "2018-10-25", "1");
+		
+		PO_View.checkElement(driver, "text", "INCI1" );
+		PO_HomeView.clickOption(driver, "logout", "class", "");
+		PO_View.checkElement(driver, "text", "Gestion y carga de incidencias" );
+
 		
 	}
+	
+	//Probamos a registrar una incidencia
+		@Test
+		public void E_TEST() {
+			PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+			PO_LoginView.fillForm(driver, "12345678P", "123456");
+			PO_View.checkElement(driver, "text", "Enviar" );
+
+			PO_RegisterView.fillForm(driver, "INCI1", "humedades", "40,-40", 
+					"humedad1,humedad2", "www.humedad.com", "P0r1", "OPEN", "Si", "2018-10-25", "1");
+			
+			PO_View.checkElement(driver, "text", "Ha ocurrido el siguiente error" );
+			
+		}
 	
 	
 	
