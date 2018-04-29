@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.uniovi.pageObjects.PO_LoginView;
+import com.uniovi.pageObjects.PO_RegisterView;
 import com.uniovi.pageObjects.PO_View;
 
 import org.junit.After;
@@ -76,8 +77,9 @@ public class SeleniumTest {
 	//Probamos a registrar una incidencia
 	@Test
 	public void D_TEST() {
-		PO_LoginView.fillForm(driver, "12345678P", "13456asaqwe");
-		PO_View.checkElement(driver, "text", "Entrar" );
+		PO_LoginView.fillForm(driver, "12345678P", "123456");
+		PO_View.checkElement(driver, "text", "Nombre de la incidencia" );
+		
 	}
 	
 	
