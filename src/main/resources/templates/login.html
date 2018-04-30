@@ -14,9 +14,6 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/logout"> <span
-							class="glyphicon glyphicon-log-out"></span> Desconectar
-					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -26,7 +23,7 @@
 		<h2>Identificate</h2>
 		<form class="form-horizontal" method="post" action="/login">
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="ident">Identificador:</label>
+				<label class="control-label col-sm-2" for="ident">Username:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="ident"
 						placeholder="Ejemplo: 12345678P" required="true" />
@@ -54,7 +51,7 @@
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button id="bntLogin" type="submit" class="btn btn-primary">Entrar</button>
+					<button type="submit" class="btn btn-primary">Entrar</button>
 				</div>
 			</div>
 		</form>
