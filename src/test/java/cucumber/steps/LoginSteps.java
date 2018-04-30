@@ -7,6 +7,9 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.uniovi.pageObjects.PO_LoginView;
+import com.uniovi.pageObjects.PO_View;
+
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -46,21 +49,24 @@ public class LoginSteps {
 	}
 
 	@Given("^a list of users:$")
-	public void a_list_of_users(List<User> users) throws Throwable {
-
+	public void a_list_of_users(List<Agent> users) throws Throwable {
+		for (Agent u : users) {
+			System.out.println("Inserting user..." + u.name + " - " + u.password);
+		}
 	}
 
 	@When("^I login with name \"(.+)\" and password \"(.+)\"$")
 	public void i_login_with_name_and_password(String name, String password) throws Throwable {
-
+		PO_LoginView.identificar(driver);
+		PO_LoginView.fillForm(driver, name, password);
 	}
 
 	@Then("^I am redirected to the incident form$")
 	public void i_receive_a_welcome_message() throws Throwable {
-
+		PO_View.checkElement(driver, "text", "Datos de la incidencia");
 	}
 
-	public static class User {
+	public static class Agent {
 		private String name;
 		private String password;
 	}

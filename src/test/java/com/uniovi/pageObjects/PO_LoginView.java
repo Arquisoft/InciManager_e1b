@@ -19,4 +19,9 @@ public class PO_LoginView {
 		By boton = By.className("btn");
 		driver.findElement(boton).click();
 	}
+
+	static public void identificar(WebDriver driver) {
+		WebElement btn = driver.findElement(By.id("btnIdent"));
+		btn.click();
+	}
 }
