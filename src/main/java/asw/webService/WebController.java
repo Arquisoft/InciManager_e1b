@@ -149,7 +149,7 @@ public class WebController {
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Model model) {
-	    return "index";
+	    return "login";
 	}
 
 }
