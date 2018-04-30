@@ -22,7 +22,7 @@ user_pref("browser.cache.disk.smart_size.enabled", false);
 user_pref("browser.cache.disk.smart_size.first_run", false);
 user_pref("browser.cache.frecency_experiment", 4);
 user_pref("browser.download.importedFromSqlite", true);
-user_pref("browser.download.lastDir", "C:\\Portable Python 3.2.5.1\\clase");
+user_pref("browser.download.lastDir", "D:\\Portable Python 3.2.5.1\\clase");
 user_pref("browser.download.panel.shown", true);
 user_pref("browser.download.useDownloadDir", false);
 user_pref("browser.migration.version", 36);
@@ -124,18 +124,6 @@ user_pref("storage.vacuum.last.places.sqlite", 1509101380);
 user_pref("toolkit.startup.last_success", 1519820136);
 user_pref("toolkit.telemetry.previousBuildID", "20160421124000");
 user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
-
-user_pref("browser.shell.checkDefaultBrowser", false);
-
-user_pref("browser.shell.checkDefaultBrowser", false);
-
-user_pref("browser.shell.checkDefaultBrowser", false);
-
-user_pref("browser.shell.checkDefaultBrowser", false);
-
-user_pref("browser.shell.checkDefaultBrowser", false);
-
-user_pref("browser.shell.checkDefaultBrowser", false);
 
 user_pref("browser.shell.checkDefaultBrowser", false);
 
