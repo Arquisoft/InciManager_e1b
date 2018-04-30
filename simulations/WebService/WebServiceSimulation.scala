@@ -5,7 +5,13 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.jdbc.Predef._
 
-class RecordedSimulation extends Simulation {
+
+/**
+	Simula un login y la creación de una incidencia usando el recorder de gatling.
+	Crea 10000 incidencias a lo largo de 5 minutos
+*/
+
+class WebServiceSimulation extends Simulation {
 
 	val httpProtocol = http
 		.baseURL("http://localhost:8090")
@@ -23,7 +29,7 @@ class RecordedSimulation extends Simulation {
 
 
 
-	val scn = scenario("RecordedSimulation")
+	val scn = scenario("WebServiceSimulation")
 		.exec(http("request_0")
 			.get("/")
 			.headers(headers_0)
@@ -78,9 +84,5 @@ class RecordedSimulation extends Simulation {
 			.headers(headers_2)))
 
 
-	setUp(scn.inject(atOnceUsers(1000))).protocols(httpProtocol)
-
-/**
-https://gatling.io/docs/2.3/general/simulation_setup/
-*/
+	setUp(scn.inject(rampUsers(10000) over(500 seconds))).protocols(httpProtocol)
 }
