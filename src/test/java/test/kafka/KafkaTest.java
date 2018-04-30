@@ -1,4 +1,4 @@
-package test;
+package test.kafka;
 
 import java.util.HashMap;
 import java.util.LinkedList;

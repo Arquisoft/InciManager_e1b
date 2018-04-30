@@ -1,15 +1,6 @@
-package com.uniovi;
+package test.selenium;
 
 
-
-import org.junit.runners.MethodSorters;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import com.uniovi.pageObjects.PO_HomeView;
-import com.uniovi.pageObjects.PO_LoginView;
-import com.uniovi.pageObjects.PO_RegisterView;
-import com.uniovi.pageObjects.PO_View;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,6 +8,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import test.selenium.page.PO_HomeView;
+import test.selenium.page.PO_LoginView;
+import test.selenium.page.PO_RegisterView;
+import test.selenium.page.PO_View;
 
 //Ordenamos las pruebas por el nombre del m�todo
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

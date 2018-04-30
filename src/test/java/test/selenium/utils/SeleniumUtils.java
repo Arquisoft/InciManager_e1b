@@ -1,4 +1,5 @@
-package test.utils;
+package test.selenium.utils;
+
 
 import java.util.List;
 
@@ -58,8 +59,8 @@ public class SeleniumUtils {
 	}
 
 	/**
-	 * Espera por la visibilidad de un elemento/s en la vista actualmente cargandose
-	 * en driver. Para ello se emplearÃ¡ una consulta xpath.
+	 * Espera por la visibilidad de un elemento/s en la vista actualmente
+	 * cargandose en driver. Para ello se emplearÃ¡ una consulta xpath.
 	 * 
 	 * @param driver:
 	 *            apuntando al navegador abierto actualmente.
@@ -81,15 +82,15 @@ public class SeleniumUtils {
 	}
 
 	/**
-	 * Espera por la visibilidad de un elemento/s en la vista actualmente cargandose
-	 * en driver. Para ello se emplearÃ¡ una consulta xpath segÃºn varios
-	 * criterios..
+	 * Espera por la visibilidad de un elemento/s en la vista actualmente
+	 * cargandose en driver. Para ello se emplearÃ¡ una consulta xpath segÃºn
+	 * varios criterios..
 	 * 
 	 * @param driver:
 	 *            apuntando al navegador abierto actualmente.
 	 * @param criterio:
-	 *            "id" or "class" or "text" or "@attribute" or "free". Si el valor
-	 *            de criterio es free es una expresion xpath completa.
+	 *            "id" or "class" or "text" or "@attribute" or "free". Si el
+	 *            valor de criterio es free es una expresion xpath completa.
 	 * @param text:
 	 *            texto correspondiente al criterio.
 	 * @param timeout:
@@ -114,8 +115,8 @@ public class SeleniumUtils {
 	}
 
 	/**
-	 * PROHIBIDO USARLO PARA VERSIÃ“N FINAL. Esperar "segundos" durante la ejecucion
-	 * del navegador
+	 * PROHIBIDO USARLO PARA VERSIÃ“N FINAL. Esperar "segundos" durante la
+	 * ejecucion del navegador
 	 * 
 	 * @param driver:
 	 *            apuntando al navegador abierto actualmente.

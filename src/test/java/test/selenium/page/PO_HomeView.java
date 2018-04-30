@@ -1,4 +1,4 @@
-package com.uniovi.pageObjects;
+package test.selenium.page;
 
 public class PO_HomeView extends PO_NavView {
 
