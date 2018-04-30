@@ -1,4 +1,4 @@
-package test.cucumber.steps;
+package com.uniovi.steps;
 
 import java.util.List;
 
@@ -7,13 +7,14 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.uniovi.pageObjects.PO_LoginView;
+import com.uniovi.pageObjects.PO_View;
+
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import test.selenium.page.PO_LoginView;
-import test.selenium.page.PO_View;
 
 public class LoginSteps {
 

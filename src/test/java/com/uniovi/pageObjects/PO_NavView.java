@@ -1,11 +1,11 @@
-package test.selenium.page;
+package com.uniovi.pageObjects;
 
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import org.openqa.selenium.*;
 
-import test.selenium.utils.SeleniumUtils;
+import com.uniovi.utils.SeleniumUtils;
 
 public class PO_NavView extends PO_View {
 	/**

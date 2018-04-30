@@ -1,4 +1,4 @@
-package test.selenium.utils;
+package com.uniovi.utils;
 
 
 import java.util.List;

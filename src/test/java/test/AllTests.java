@@ -4,13 +4,14 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import test.cucumber.CucumberTest;
+import com.uniovi.CucumberTest;
+import com.uniovi.SeleniumTest;
+
 import test.kafka.KafkaTest;
 import test.rest.RESTTest;
-import test.selenium.SeleniumTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ CucumberTest.class, KafkaTest.class, RESTTest.class, SeleniumTest.class })
+@SuiteClasses({ KafkaTest.class, RESTTest.class })
 public class AllTests {
 
 }
