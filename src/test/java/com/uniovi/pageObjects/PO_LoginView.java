@@ -20,7 +20,7 @@ public class PO_LoginView {
 		driver.findElement(boton).click();
 	}
 
-	static public void identificar(WebDriver driver) {
+	public static void identificar(WebDriver driver) {
 		WebElement btn = driver.findElement(By.id("btnIdent"));
 		btn.click();
 	}

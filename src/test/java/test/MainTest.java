@@ -1,4 +1,4 @@
-package test.rest;
+package test;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -28,7 +28,7 @@ import asw.webService.IncidenceData;
 @WebAppConfiguration
 @IntegrationTest({ "server.port=0" })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RESTTest {
+public class MainTest {
 
 	@Value("${local.server.port}")
 	private int port;
