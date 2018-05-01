@@ -44,34 +44,34 @@ public class MainTest {
 		this.base = new URL("http://localhost:" + port + "/");
 		template = new TestRestTemplate();
 
-		String username = "maria@gmail.com";
-		String password = "123123";
+		String username = "entidad2";
+		String password = "123456";
 
 		String name = "FUGA GAS";
 		String description = "Fuga de gas cocina";
-		String location = "gijon";
+		String location = "29,29";
 		String tags = "bombona,gas";
 		String additionalInformation = "Butano";
 		String properties = "bombona:butano";
-		String state = "OPEN";
-		String notification = "yes";
-		String expireAt = "tomorrowland";
-		String assignedTo = "x";
+		String state = "Abierta";
+		String notification = "si";
+		String expireAt = "2018-10-25 10:02:29.769579";
+		String assignedTo = "oper_rUxl";
 
 		incidenceData1 = new IncidenceData(username, password, name, description, location, tags, additionalInformation,
 				properties, state, notification, expireAt, assignedTo);
 
-		username = "paco@gmail.com";
-		password = "123123";
+		username = "entidad2";
+		password = "123456";
 
 		name = "Incendio";
 		description = "Incendio muy grande";
 		location = "Salinas";
 		tags = "asd,edf";
-		state = "OPEN";
-		notification = "yes";
-		expireAt = "today";
-		assignedTo = "x";
+		state = "Abierta";
+		notification = "si";
+		expireAt = "2018-10-25 10:02:29.769579";
+		assignedTo = "oper_rUxl";
 
 		incidenceData2 = new IncidenceData(username, password, name, description, location, tags, additionalInformation,
 				properties, state, notification, expireAt, assignedTo);
