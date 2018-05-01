@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.uniovi.pageObjects.PO_LoginView;
+import com.uniovi.pageObjects.PO_RegisterView;
 import com.uniovi.pageObjects.PO_View;
 
 import cucumber.api.java.After;
@@ -54,17 +55,26 @@ public class LoginSteps {
 			System.out.println("Inserting user..." + u.name + " - " + u.password);
 		}
 	}
+	
+	@Given("^a user:$")
+	public void a_user(List<Agent> users) throws Throwable {
+		PO_LoginView.identificar(driver);
+		PO_LoginView.fillForm(driver, "12345678P", "123456");
+	}
 
 	@When("^I login with name \"(.+)\" and password \"(.+)\"$")
 	public void i_login_with_name_and_password(String name, String password) throws Throwable {
 		PO_LoginView.identificar(driver);
 		PO_LoginView.fillForm(driver, name, password);
 	}
+	
 
 	@Then("^I am redirected to the incident form$")
 	public void i_receive_a_welcome_message() throws Throwable {
 		PO_View.checkElement(driver, "text", "Datos de la incidencia");
 	}
+	
+
 
 	public static class Agent {
 		private String name;
