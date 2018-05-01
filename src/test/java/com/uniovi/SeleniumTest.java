@@ -22,11 +22,10 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SeleniumTest {
 	
-	static String PathFirefox = "Firefox46.win\\FirefoxPortable.exe";
+	static String PathFirefox = "C:\\Firefox46.win\\FirefoxPortable.exe";
 
 	static WebDriver driver = getDriver(PathFirefox);
 	static String URL_INCI = "http://localhost:8090";
-	static String URL_AGENTS = "http://localhost:8090";
 	
 	public static WebDriver getDriver(String PathFirefox) {
 		System.setProperty("webdriver.firefox.bin", PathFirefox);
