@@ -19,8 +19,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
+import com.uniovi.category.BasicTest;
+
 import asw.Application;
 import asw.webService.IncidenceData;
+import groovy.lang.Category;
 
 @SuppressWarnings("deprecation")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,6 +31,7 @@ import asw.webService.IncidenceData;
 @WebAppConfiguration
 @IntegrationTest({ "server.port=0" })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@Category(BasicTest.class)
 public class MainTest {
 
 	@Value("${local.server.port}")

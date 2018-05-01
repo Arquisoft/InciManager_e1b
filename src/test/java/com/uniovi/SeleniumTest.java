@@ -3,6 +3,7 @@ package com.uniovi;
 
 
 import org.junit.runners.MethodSorters;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -11,29 +12,32 @@ import com.uniovi.pageObjects.PO_LoginView;
 import com.uniovi.pageObjects.PO_RegisterView;
 import com.uniovi.pageObjects.PO_View;
 
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+
+@Category(SeleniumTest.class)
 //Ordenamos las pruebas por el nombre del m�todo
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SeleniumTest {
-	
-	static String PathFirefox = "Firefox46.win\\FirefoxPortable.exe";
+	static String PathFirefox = "C:\\Firefox46.win\\FirefoxPortable.exe";
 
 	static WebDriver driver = getDriver(PathFirefox);
 	static String URL_INCI = "http://localhost:8090";
-	static String URL_AGENTS = "http://localhost:8091";
+	
 	
 	public static WebDriver getDriver(String PathFirefox) {
 		System.setProperty("webdriver.firefox.bin", PathFirefox);
 		WebDriver driver = new FirefoxDriver();
 		return driver;
 	}
-
+	
 	@Before
 	public void setUp() throws Exception {
 		driver.navigate().to(URL_INCI);
@@ -112,3 +116,7 @@ public class SeleniumTest {
 	
 	
 }
+	
+	
+	
+
