@@ -29,22 +29,22 @@ public class KafkaTest {
 	@Before
 	public void setUp() {
 		
-		String username = "maria@gmail.com";
-		String password = "lsdmowpwomfowfpñ";
+		String username = "entidad2";
+		String password = "123456";
 
 		String name= "FUGA GAS";
 		String description = "Fuga de gas cocina";
-		String location = "-20,20";
+		String location = "30,30";
 		List<String> tags = new LinkedList<String>();
 		tags.add("gas");
 		tags.add("fuga");
 		String additionalInformation ="Butano";
 		Map<String, String> properties = new HashMap<String,String>();
 		properties.put("Bombona", "butano");
-		String state="OPEN";
-		String notification = "yes";
+		String state="Abierta";
+		String notification = "si";
 		String expireAt = "2018-10-25 10:03:29.76579";
-		String assignedTo = "x";
+		String assignedTo = "oper_Glh";
 		
 		incidence = new Incidence(username, password, name, description, location,
 				 tags, additionalInformation, properties,  state,
