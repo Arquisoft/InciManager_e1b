@@ -12,13 +12,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.uniovi.category.BasicTest;
+
 import asw.Application;
 import asw.entities.Incidence;
 import asw.kafkaManager.KafkaService;
+import groovy.lang.Category;
 
 
 @SpringBootTest(classes = { Application.class})
 @RunWith(SpringJUnit4ClassRunner.class)
+@Category(BasicTest.class)
 public class KafkaTest {
 	
 	@Autowired
