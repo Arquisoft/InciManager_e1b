@@ -18,7 +18,7 @@ import cucumber.api.java.en.When;
 
 public class LoginSteps {
 
-	static String PathFirefox = "Firefox46.win\\FirefoxPortable.exe";
+	static String PathFirefox = "C:\\Firefox46.win\\FirefoxPortable.exe";
 
 	static WebDriver driver = getDriver(PathFirefox);
 	static String URL_INCI = "http://localhost:8090";
