@@ -55,7 +55,7 @@ public class LoginSteps {
 			System.out.println("Inserting user..." + u.name + " - " + u.password);
 		}
 	}
-	
+
 	@Given("^a user:$")
 	public void a_user(List<Agent> users) throws Throwable {
 		PO_LoginView.identificar(driver);
@@ -67,7 +67,7 @@ public class LoginSteps {
 		PO_LoginView.identificar(driver);
 		PO_LoginView.fillForm(driver, name, password);
 	}
-	
+
 	@When("^I fill the form with name \"(.+)\" description \"(.+)\" location \"(.+)\" tags \"(.+)\" additionalInformation \"(.+)\" properties \"(.+)\" state \"(.+)\" notification \"(.+)\" expireAt \"(.+)\" and assignedTo \"(.+)\"$")
 	public void i_fill_the_form(String name, String description, String location, String tags,
 			String additionalInformation, String properties, String state, String notification, String expireAt,
@@ -77,15 +77,16 @@ public class LoginSteps {
 	}
 
 	@Then("^I am redirected to the incident form$")
-	public void i_receive_a_welcome_message() throws Throwable {
+	public void i_am_redirected_to_the_form() throws Throwable {
 		PO_View.checkElement(driver, "text", "Datos de la incidencia");
+		PO_LoginView.desconectar(driver);
 	}
-	
+
 	@Then("^I am not redirected to the incident form$")
 	public void i_am_not_redirected_to_the_form() throws Throwable {
 		PO_View.checkElement(driver, "text", "ident");
 	}
-	
+
 	@Then("^I am redirected to the incident deatils$")
 	public void i_redirected_to_the_incident_form() throws Throwable {
 		PO_View.checkElement(driver, "text", "Incidencia procesada");
