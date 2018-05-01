@@ -121,5 +121,19 @@ public class SeleniumTest {
 		PO_View.checkElement(driver, "text", "Identificate");
 
 	}
+	
+	// Probamos a registrar una incidencia mal sin localizacion
+	@Test
+	public void G_TEST() {
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		PO_LoginView.fillForm(driver, "12345678P", "123456");
+		PO_View.checkElement(driver, "text", "Enviar");
+
+		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "", "humedad1, humedad2 ,humedad3", "www.humedad.com", "P0:r1",
+				"OPEN", "Si", "2018-10-25", "1");
+
+		PO_View.checkElement(driver, "text", "Ha ocurrido el siguiente error");
+
+	}
 
 }
