@@ -81,6 +81,11 @@ public class LoginSteps {
 		PO_View.checkElement(driver, "text", "Datos de la incidencia");
 	}
 	
+	@Then("^I am not redirected to the incident form$")
+	public void i_am_not_redirected_to_the_form() throws Throwable {
+		PO_View.checkElement(driver, "text", "ident");
+	}
+	
 
 
 	public static class Agent {
