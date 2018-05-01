@@ -26,6 +26,10 @@ public class SeleniumTest {
 
 	static WebDriver driver = getDriver(PathFirefox);
 	static String URL_INCI = "http://localhost:8090";
+<<<<<<< HEAD
+=======
+	static String URL_AGENTS = "http://localhost:8091";
+>>>>>>> 487f4cc2ce04370872426d0b0dde4119663e448b
 	
 	public static WebDriver getDriver(String PathFirefox) {
 		System.setProperty("webdriver.firefox.bin", PathFirefox);
@@ -89,7 +93,7 @@ public class SeleniumTest {
 		
 		PO_View.checkElement(driver, "text", "INCI1" );
 		PO_HomeView.clickOption(driver, "logout", "class", "");
-		PO_View.checkElement(driver, "text", "Gestion y carga de incidencias" );
+		PO_View.checkElement(driver, "text", "Identificate" );
 
 		
 	}
