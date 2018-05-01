@@ -133,7 +133,18 @@ public class SeleniumTest {
 				"OPEN", "Si", "2018-10-25", "1");
 
 		PO_View.checkElement(driver, "text", "Ha ocurrido el siguiente error");
+	}
+	
+	// Probamos a registrar una incidencia con campos vacios
+	@Test
+	public void H_TEST() {
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		PO_LoginView.fillForm(driver, "12345678P", "123456");
+		PO_View.checkElement(driver, "text", "Enviar");
 
+		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "", "", "www.humedad.com", "P0:r1",
+				"OPEN", "Si", "2018-10-25", "1");
+		PO_View.checkElement(driver, "text", "Datos de la incidencia");
 	}
 
 }
