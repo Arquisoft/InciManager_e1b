@@ -26,17 +26,14 @@ public class SeleniumTest {
 
 	static WebDriver driver = getDriver(PathFirefox);
 	static String URL_INCI = "http://localhost:8090";
-<<<<<<< HEAD
-=======
-	static String URL_AGENTS = "http://localhost:8091";
->>>>>>> 487f4cc2ce04370872426d0b0dde4119663e448b
+	
 	
 	public static WebDriver getDriver(String PathFirefox) {
 		System.setProperty("webdriver.firefox.bin", PathFirefox);
 		WebDriver driver = new FirefoxDriver();
 		return driver;
 	}
-
+	
 	@Before
 	public void setUp() throws Exception {
 		driver.navigate().to(URL_INCI);
@@ -115,3 +112,7 @@ public class SeleniumTest {
 	
 	
 }
+	
+	
+	
+
