@@ -86,7 +86,10 @@ public class LoginSteps {
 		PO_View.checkElement(driver, "text", "ident");
 	}
 	
-
+	@Then("^I am redirected to the incident deatils$")
+	public void i_redirected_to_the_incident_form() throws Throwable {
+		PO_View.checkElement(driver, "text", "Incidencia procesada");
+	}
 
 	public static class Agent {
 		private String name;
@@ -94,3 +97,4 @@ public class LoginSteps {
 	}
 
 }
+
