@@ -68,6 +68,13 @@ public class LoginSteps {
 		PO_LoginView.fillForm(driver, name, password);
 	}
 	
+	@When("^I fill the form with name \"(.+)\" description \"(.+)\" location \"(.+)\" tags \"(.+)\" additionalInformation \"(.+)\" properties \"(.+)\" state \"(.+)\" notification \"(.+)\" expireAt \"(.+)\" and assignedTo \"(.+)\"$")
+	public void i_fill_the_form(String name, String description, String location, String tags,
+			String additionalInformation, String properties, String state, String notification, String expireAt,
+			String assignedTo) throws Throwable {
+		PO_RegisterView.fillForm(driver, name, description, location, tags, additionalInformation, properties, state,
+				notification, expireAt, assignedTo);
+	}
 
 	@Then("^I am redirected to the incident form$")
 	public void i_receive_a_welcome_message() throws Throwable {
