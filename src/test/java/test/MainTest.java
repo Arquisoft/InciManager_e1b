@@ -263,8 +263,8 @@ public class MainTest {
 	public void T12AcceptIncident() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		String incidenceURI = base.toString() + "/postIncident";
-		String request1 = "{\"username\":\"entidad2\",\"password\":123456,\"name\":\"FUGA GAS\",\"description\":\"Fuga de gas cocina\",\"location\":\"2919,178\",\"tags\":\"bombona,gas\",\"additionalInformation\":\"Butano\",\"properties\":\"bombona:butano\",\"state\":\"Abierta\",\"notification\":\"yes\",\"expiration\":\"2018-10-25 10:02:29.769579\",\"assignedTo\":\"x\"}";
-		String request2 = "{\"username\":\"entidad2\",\"password\":123456,\"name\":\"Incendio\",\"description\":\"Incendio muy grande\",\"location\":\"2919,178\",\"tags\":\"asd,edf\",\"additionalInformation\":\"Butano\",\"properties\":\"bombona:butano\",\"state\":\"Abierta\",\"notification\":\"yes\",\"expiration\":\"2018-10-25 10:02:29.769579\",\"assignedTo\":\"x\"}";
+		String request1 = "{\"username\":null,\"password\":null,\"name\":\"FUGA GAS\",\"description\":\"Fuga de gas cocina\",\"location\":\"gijon\",\"tags\":\"bombona,gas\",\"additionalInformation\":\"Butano\",\"properties\":\"bombona:butano\",\"state\":\"OPEN\",\"notification\":\"yes\",\"expiration\":\"tomorrowland\",\"assignedTo\":\"x\"}";
+		String request2 = "{\"username\":null,\"password\":null,\"name\":\"Incendio\",\"description\":\"Incendio muy grande\",\"location\":\"Salinas\",\"tags\":\"asd,edf\",\"additionalInformation\":\"Butano\",\"properties\":\"bombona:butano\",\"state\":\"OPEN\",\"notification\":\"yes\",\"expiration\":\"today\",\"assignedTo\":\"x\"}";
 
 		response = template.postForEntity(incidenceURI, incidenceData1, String.class);
 		assertThat(response.getBody(), equalTo(request1));
