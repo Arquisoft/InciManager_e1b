@@ -1,18 +1,22 @@
-language: java
-jdk:
-- oraclejdk8
-after_success:
-- bash <(curl -s https://codecov.io/bash)
-- nohup bash -c "cd kafka && bin/kafka-server-stop.sh config/server.properties &"
-- nohup bash -c "cd kafka && bin/zookeeper-server-stop.sh config/zookeeper.properties &"
-before_script:
-- "export DISPLAY=:99.0"
-- "sh -e /etc/init.d/xvfb start"
-- sleep 3 # give xvfb some time to start
-- sleep 120; mvn test -Dgroups="BasicTest";
-before_install:
-- wget http://apache.rediris.es/kafka/1.0.0/kafka_2.11-1.0.0.tgz -O kafka.tgz
-- mkdir -p kafka && tar xzf kafka.tgz -C kafka --strip-components 1
-- nohup bash -c "cd kafka && bin/zookeeper-server-start.sh config/zookeeper.properties &"
-- nohup bash -c "cd kafka && bin/kafka-server-start.sh config/server.properties &"
--sleep 120; mvn test -Dgroups="BasicTest";
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: wget https://github.com/Arquisoft/InciManager_e1b/archive/v1.0.zip
+      - run: unzip v0.1.zip
+      - run: wget http://apache.rediris.es/kafka/1.0.0/kafka_2.11-1.0.0.tgz -O kafka.zip
+      - run: mkdir -p kafka && unzip kafka.zip
+      - run:
+          command: sh kafka_2.11-0.11.0.1/bin/zookeeper-server-start.sh kafka_2.11-0.11.0.1/config/zookeeper.properties;
+          background: true
+      - run:
+          command: sh kafka_2.11-0.11.0.1/bin/kafka-server-start.sh kafka_2.11-0.11.0.1/config/server.properties;
+          background: true
+      - run:
+          command: cd Agents_e1a-0.1/; mvn spring-boot:run;
+          background: true
+      - run: sleep 30; sh kafka_2.11-0.11.0.1/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic INCIDENCES;
+      - run: sleep 120; mvn clean install
+      - run: bash <(curl -s https://codecov.io/bash)
