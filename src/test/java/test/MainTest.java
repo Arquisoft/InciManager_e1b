@@ -58,7 +58,7 @@ public class MainTest {
 		String additionalInformation = "Butano";
 		String properties = "bombona:butano";
 		String state = "Abierta";
-		String notification = "si";
+		String notification = "Si";
 		String expireAt = "2018-10-25 10:02:29.769579";
 		String assignedTo = "oper_rUxl";
 
@@ -70,10 +70,10 @@ public class MainTest {
 
 		name = "Incendio";
 		description = "Incendio muy grande";
-		location = "Salinas";
+		location = "-90,90";
 		tags = "asd,edf";
 		state = "Abierta";
-		notification = "si";
+		notification = "Si";
 		expireAt = "2018-10-25 10:02:29.769579";
 		assignedTo = "oper_rUxl";
 
@@ -268,7 +268,7 @@ public class MainTest {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		String incidenceURI = base.toString() + "/postIncident";
 		String request1 = "{\"username\":null,\"password\":null,\"name\":\"FUGA GAS\",\"description\":\"Fuga de gas cocina\",\"location\":\"29,29\",\"tags\":\"bombona,gas\",\"additionalInformation\":\"Butano\",\"properties\":\"bombona:butano\",\"state\":\"Abierta\",\"notification\":\"Si\",\"expiration\":\"2018-10-25 10:02:29.769579\",\"assignedTo\":\"oper_rUxl\"}";
-		String request2 = "{\"username\":null,\"password\":null,\"name\":\"Incendio\",\"description\":\"Incendio muy grande\",\"location\":\"29,29\",\"tags\":\"asd,edf\",\"additionalInformation\":\"Butano\",\"properties\":\"bombona:butano\",\"state\":\"Abierta\",\"notification\":\"Si\",\"expiration\":\"2018-10-25 10:02:29.769579\",\"assignedTo\":\"oper_rUxl\"}";
+		String request2 = "{\"username\":null,\"password\":null,\"name\":\"Incendio\",\"description\":\"Incendio muy grande\",\"location\":\"-90,90\",\"tags\":\"asd,edf\",\"additionalInformation\":\"Butano\",\"properties\":\"bombona:butano\",\"state\":\"Abierta\",\"notification\":\"Si\",\"expiration\":\"2018-10-25 10:02:29.769579\",\"assignedTo\":\"oper_rUxl\"}";
 
 		response = template.postForEntity(incidenceURI, incidenceData1, String.class);
 		assertThat(response.getBody(), equalTo(request1));
