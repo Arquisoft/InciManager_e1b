@@ -84,7 +84,7 @@ public class SeleniumTest {
 		PO_View.checkElement(driver, "text", "Enviar");
 
 		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "40,-40", "humedad1,humedad2", "www.humedad.com",
-				"P0:r1", "OPEN", "Si", "2018-10-25", "1");
+				"P0:r1", "2018-10-25", "1");
 
 		PO_View.checkElement(driver, "text", "INCI1");
 		PO_HomeView.clickOption(driver, "logout", "class", "");
@@ -99,8 +99,7 @@ public class SeleniumTest {
 		PO_LoginView.fillForm(driver, "12345678P", "123456");
 		PO_View.checkElement(driver, "text", "Enviar");
 
-		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "40,-40", "humedad1,humedad2", "www.humedad.com", "P0r1",
-				"OPEN", "Si", "2018-10-25", "1");
+		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "40,-40", "humedad1,humedad2", "www.humedad.com", "P0r1", "2018-10-25", "1");
 
 		PO_View.checkElement(driver, "text", "Ha ocurrido el siguiente error");
 
@@ -113,8 +112,7 @@ public class SeleniumTest {
 		PO_LoginView.fillForm(driver, "12345678P", "123456");
 		PO_View.checkElement(driver, "text", "Enviar");
 
-		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "", "humedad1,humedad2", "www.humedad.com", "P0:r1",
-				"OPEN", "Si", "2018-10-25", "1");
+		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "", "humedad1,humedad2", "www.humedad.com", "P0:r1", "2018-10-25", "1");
 
 		PO_View.checkElement(driver, "text", "INCI1");
 		PO_HomeView.clickOption(driver, "logout", "class", "");
@@ -129,8 +127,7 @@ public class SeleniumTest {
 		PO_LoginView.fillForm(driver, "12345678P", "123456");
 		PO_View.checkElement(driver, "text", "Enviar");
 
-		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "", "humedad1, humedad2 ,humedad3", "www.humedad.com", "P0:r1",
-				"OPEN", "Si", "2018-10-25", "1");
+		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "", "humedad1, humedad2 ,humedad3", "www.humedad.com", "P0:r1", "2018-10-25", "1");
 
 		PO_View.checkElement(driver, "text", "Ha ocurrido el siguiente error");
 	}
@@ -142,8 +139,7 @@ public class SeleniumTest {
 		PO_LoginView.fillForm(driver, "12345678P", "123456");
 		PO_View.checkElement(driver, "text", "Enviar");
 
-		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "", "", "www.humedad.com", "P0:r1",
-				"OPEN", "Si", "2018-10-25", "1");
+		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "", "", "www.humedad.com", "P0:r1", "2018-10-25", "1");
 		PO_View.checkElement(driver, "text", "Datos de la incidencia");
 	}
 
