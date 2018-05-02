@@ -24,4 +24,10 @@ public class PO_LoginView {
 		WebElement btn = driver.findElement(By.id("btnIdent"));
 		btn.click();
 	}
+
+	public static void desconectar(WebDriver driver) {
+		WebElement btn = driver.findElement(By.id("btnDesconectar"));
+		btn.click();
+		
+	}
 }

@@ -1,7 +1,5 @@
 package com.uniovi;
 
-
-
 import org.junit.runners.MethodSorters;
 
 import org.openqa.selenium.WebDriver;
@@ -12,7 +10,6 @@ import com.uniovi.pageObjects.PO_LoginView;
 import com.uniovi.pageObjects.PO_RegisterView;
 import com.uniovi.pageObjects.PO_View;
 
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,28 +18,26 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-
 @Category(SeleniumTest.class)
-//Ordenamos las pruebas por el nombre del m�todo
+// Ordenamos las pruebas por el nombre del m�todo
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SeleniumTest {
 	static String PathFirefox = "C:\\Firefox46.win\\FirefoxPortable.exe";
 
 	static WebDriver driver = getDriver(PathFirefox);
 	static String URL_INCI = "http://localhost:8090";
-	
-	
+
 	public static WebDriver getDriver(String PathFirefox) {
 		System.setProperty("webdriver.firefox.bin", PathFirefox);
 		WebDriver driver = new FirefoxDriver();
 		return driver;
 	}
-	
+
 	@Before
 	public void setUp() throws Exception {
 		driver.navigate().to(URL_INCI);
 	}
-	
+
 	@BeforeClass
 	static public void begin() {
 	}
@@ -56,67 +51,100 @@ public class SeleniumTest {
 	public void tearDown() throws Exception {
 		driver.manage().deleteAllCookies();
 	}
-	
-	
-	//Probamos a entrar con un usuario incorrecto
+
+	// Probamos a entrar con un usuario incorrecto
 	@Test
 	public void A_TEST() {
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "123", "123456");
-		PO_View.checkElement(driver, "text", "Entrar" );
+		PO_View.checkElement(driver, "text", "Entrar");
 	}
-	
-	//Probamos a entrar con una contraseña incorrecta
+
+	// Probamos a entrar con una contraseña incorrecta
 	@Test
 	public void B_TEST() {
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "12345678P", "13456asaqwe");
-		PO_View.checkElement(driver, "text", "Entrar" );
+		PO_View.checkElement(driver, "text", "Entrar");
 	}
-	
-	//Probamos entrar correctamente
+
+	// Probamos entrar correctamente
 	@Test
 	public void C_TEST() {
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "12345678P", "123456");
-		PO_View.checkElement(driver, "text", "Enviar" );
+		PO_View.checkElement(driver, "text", "Enviar");
 	}
-		
-	//Probamos a registrar una incidencia
+
+	// Probamos a registrar una incidencia
 	@Test
 	public void D_TEST() {
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "12345678P", "123456");
-		PO_View.checkElement(driver, "text", "Enviar" );
+		PO_View.checkElement(driver, "text", "Enviar");
 
-		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "40,-40", 
-				"humedad1,humedad2", "www.humedad.com", "P0:r1", "OPEN", "Si", "2018-10-25", "1");
-		
-		PO_View.checkElement(driver, "text", "INCI1" );
+		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "40,-40", "humedad1,humedad2", "www.humedad.com",
+				"P0:r1", "OPEN", "Si", "2018-10-25", "1");
+
+		PO_View.checkElement(driver, "text", "INCI1");
 		PO_HomeView.clickOption(driver, "logout", "class", "");
-		PO_View.checkElement(driver, "text", "Identificate" );
+		PO_View.checkElement(driver, "text", "Identificate");
 
-		
+	}
+
+	// Probamos a registrar una incidencia
+	@Test
+	public void E_TEST() {
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		PO_LoginView.fillForm(driver, "12345678P", "123456");
+		PO_View.checkElement(driver, "text", "Enviar");
+
+		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "40,-40", "humedad1,humedad2", "www.humedad.com", "P0r1",
+				"OPEN", "Si", "2018-10-25", "1");
+
+		PO_View.checkElement(driver, "text", "Ha ocurrido el siguiente error");
+
+	}
+
+	// Probamos a registrar una incidencia sin localizacion
+	@Test
+	public void F_TEST() {
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		PO_LoginView.fillForm(driver, "12345678P", "123456");
+		PO_View.checkElement(driver, "text", "Enviar");
+
+		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "", "humedad1,humedad2", "www.humedad.com", "P0:r1",
+				"OPEN", "Si", "2018-10-25", "1");
+
+		PO_View.checkElement(driver, "text", "INCI1");
+		PO_HomeView.clickOption(driver, "logout", "class", "");
+		PO_View.checkElement(driver, "text", "Identificate");
+
 	}
 	
-	//Probamos a registrar una incidencia
-		@Test
-		public void E_TEST() {
-			PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-			PO_LoginView.fillForm(driver, "12345678P", "123456");
-			PO_View.checkElement(driver, "text", "Enviar" );
+	// Probamos a registrar una incidencia mal sin localizacion
+	@Test
+	public void G_TEST() {
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		PO_LoginView.fillForm(driver, "12345678P", "123456");
+		PO_View.checkElement(driver, "text", "Enviar");
 
-			PO_RegisterView.fillForm(driver, "INCI1", "humedades", "40,-40", 
-					"humedad1,humedad2", "www.humedad.com", "P0r1", "OPEN", "Si", "2018-10-25", "1");
-			
-			PO_View.checkElement(driver, "text", "Ha ocurrido el siguiente error" );
-			
-		}
+		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "", "humedad1, humedad2 ,humedad3", "www.humedad.com", "P0:r1",
+				"OPEN", "Si", "2018-10-25", "1");
+
+		PO_View.checkElement(driver, "text", "Ha ocurrido el siguiente error");
+	}
 	
-	
-	
+	// Probamos a registrar una incidencia con campos vacios
+	@Test
+	public void H_TEST() {
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		PO_LoginView.fillForm(driver, "12345678P", "123456");
+		PO_View.checkElement(driver, "text", "Enviar");
+
+		PO_RegisterView.fillForm(driver, "INCI1", "humedades", "", "", "www.humedad.com", "P0:r1",
+				"OPEN", "Si", "2018-10-25", "1");
+		PO_View.checkElement(driver, "text", "Datos de la incidencia");
+	}
+
 }
-	
-	
-	
-
