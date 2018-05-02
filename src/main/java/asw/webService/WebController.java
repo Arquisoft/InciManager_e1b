@@ -93,7 +93,10 @@ public class WebController {
 
 		Assert.areTagsValid(incidenceData.getTags());
 		Assert.arePropertiesValid(incidenceData.getProperties());
-		Assert.isLocationValid(incidenceData.getLocation());
+		
+		if (incidenceData.getLocation() != "") {
+            Assert.isLocationValid(incidenceData.getLocation());
+        }
 
 		Incidence incidence = new Incidence();
 
