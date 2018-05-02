@@ -72,8 +72,7 @@ public class LoginSteps {
 	public void i_fill_the_form(String name, String description, String location, String tags,
 			String additionalInformation, String properties, String state, String notification, String expireAt,
 			String assignedTo) throws Throwable {
-		PO_RegisterView.fillForm(driver, name, description, location, tags, additionalInformation, properties, state,
-				notification, expireAt, assignedTo);
+		PO_RegisterView.fillForm(driver, name, description, location, tags, additionalInformation, properties, state, assignedTo);
 	}
 
 	@Then("^I am redirected to the incident form$")
