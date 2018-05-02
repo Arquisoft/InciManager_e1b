@@ -17,3 +17,21 @@ function genDesc(){
 
   return incDescriptions[Math.round(Math.random() * (incDescriptions.length-1))];
 }
+
+function genTags(){
+  incTags = ["Lluvia", "Fuego", "Nieve", "Niebla", "Terremoto", "Inundacion"]
+  return incTags[Math.round(Math.random() * (incTags.length-1))];
+}
+
+
+function fillForm(){
+  document.getElementById("incName").value = genIncName();
+  document.getElementById("incDesc").value = genDesc();
+  document.getElementById("incLoc").value = genLoc();
+  document.getElementById("incTags").value = genTags();
+  document.getElementById("incAdditionalInfo").value = additionalInfo;
+  document.getElementById("incProperties").value = properties;
+  document.getElementById("incExpirationDate").value = expirationTime;
+  document.getElementById("incOper").value = genOper();
+  document.getElementById("incDesc").value = genDesc();
+}
