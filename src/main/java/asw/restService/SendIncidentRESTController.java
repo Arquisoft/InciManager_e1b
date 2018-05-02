@@ -47,6 +47,9 @@ public class SendIncidentRESTController {
 
 		Assert.areTagsValid(incidenceData.getTags());
 		Assert.arePropertiesValid(incidenceData.getProperties());
+		if (incidenceData.getLocation() != "") {
+            Assert.isLocationValid(incidenceData.getLocation());
+        }
 
 		Incidence incidence = new Incidence();
 
