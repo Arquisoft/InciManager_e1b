@@ -45,10 +45,10 @@ public class WebController {
 	public String index() {
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
-	    return "login";
+		return "login";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -93,6 +93,7 @@ public class WebController {
 
 		Assert.areTagsValid(incidenceData.getTags());
 		Assert.arePropertiesValid(incidenceData.getProperties());
+		Assert.isLocationValid(incidenceData.getLocation());
 
 		Incidence incidence = new Incidence();
 
@@ -146,10 +147,10 @@ public class WebController {
 
 		return "error";
 	}
-	
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Model model) {
-	    return "login";
+		return "login";
 	}
 
 }

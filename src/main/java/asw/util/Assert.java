@@ -82,4 +82,36 @@ public class Assert {
 		return true;
 	}
 
+	/**
+	 * Comprueba que la localización que se le pasa sea válida. Solo le permite dos
+	 * números enteros o flotantes separados por una coma comprendidos en [-90,90]
+	 * 
+	 * @param location
+	 */
+	public static boolean isLocationValid(String location) {
+		String[] cords = location.split(",");
+
+		if (cords.length == 2) {
+
+			if (cords[0].matches("-?[0-9]*") || cords[0].matches("-?[0-9]*.[0-9]*") && cords[1].matches("-?[0-9]*")
+					|| cords[1].matches("-?[0-9]*.[0-9]*")) {
+
+				double d1 = Float.parseFloat(cords[0]);
+				double d2 = Float.parseFloat(cords[1]);
+
+				if (d1 >= -90.0 && d1 <= 90.0 && d2 >= -90.0 && d2 <= 90.0) {
+					return true;
+				} else {
+					throw ErrorFactory.getError(Errors.WRONG_INCIDENT_LOCATION);
+				}
+			} else {
+				throw ErrorFactory.getError(Errors.WRONG_INCIDENT_LOCATION);
+			}
+
+		} else {
+			throw ErrorFactory.getError(Errors.WRONG_INCIDENT_LOCATION);
+		}
+
+	}
+
 }
