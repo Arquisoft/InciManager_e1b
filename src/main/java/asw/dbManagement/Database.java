@@ -9,4 +9,5 @@ public interface Database {
 	 * @param incidence
 	 */
     void sendInci(Incidence incidence);
+
 }

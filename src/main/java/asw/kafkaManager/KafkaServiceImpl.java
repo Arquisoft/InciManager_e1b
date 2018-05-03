@@ -33,7 +33,7 @@ public class KafkaServiceImpl implements KafkaService {
 
 	@Override
 	public void sendInci(Incidence incidence) {
-
+		
 		send(TOPIC, incidence);
 
 	}
