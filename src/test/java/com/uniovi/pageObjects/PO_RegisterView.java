@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 public class PO_RegisterView extends PO_NavView {
 	
 	static public void fillForm(WebDriver driver, String namep, String descriptionp, String locationp, String tagsp,
-			String additionalInformationp, String propertiesp, String statep, String notificationp, String expirationp,
+			String additionalInformationp, String propertiesp, String expirationp,
 			String assignedTop) {
 		WebElement name = driver.findElement(By.name("name"));
 		name.click();
@@ -33,14 +33,6 @@ public class PO_RegisterView extends PO_NavView {
 		properties.click();
 		properties.clear();
 		properties.sendKeys(propertiesp);
-		WebElement state = driver.findElement(By.name("state"));
-		state.click();
-		state.clear();
-		state.sendKeys(statep);
-		WebElement notification = driver.findElement(By.name("notification"));
-		notification.click();
-		notification.clear();
-		notification.sendKeys(notificationp);
 		WebElement expiration = driver.findElement(By.name("expiration"));
 		expiration.click();
 		expiration.clear();

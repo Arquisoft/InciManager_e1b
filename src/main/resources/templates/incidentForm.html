@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="fragments/head" />
+<head th:replace="fragments/head"/>
 <body>
 
 	<nav class="navbar navbar-inverse">
@@ -15,7 +15,7 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/logout"> <span
+					<li><a id="btnDesconectar" href="/logout"> <span
 							class="glyphicon glyphicon-log-out"></span> Desconectar
 					</a></li>
 				</ul>
@@ -33,28 +33,28 @@
 					la incidencia:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="name"
-						placeholder="inc_GHKB" required="true" />
+						placeholder="inc_GHKB" required="true" id="incName"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="description">Descripcion:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="description"
-						placeholder="Nueva lectura de humedad" required="true" />
+						placeholder="Nueva lectura de humedad" required="true" id="incDesc" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="location">Localizacion: (*)Se puede dejar vacio</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="location"
-						placeholder="2919,178" />
+						placeholder="45.4,-45.5" id="incLoc"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="tags">Etiquetas:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="tags"
-						placeholder="Nieve,Fuego,Niebla" required="true" />
+						placeholder="Nieve,Fuego,Niebla" required="true" id="incTags"/>
 				</div>
 			</div>
 			<div class="form-group">
@@ -64,47 +64,55 @@
 					<input type="text" class="form-control"
 						name="additionalInformation"
 						placeholder="http://puntoverdeleon.com.mx/imagen-de-prueba-320x240.jpg"
-						required="true" />
+						required="true" id="incAdditionalInfo"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="properties">Propiedades:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="properties"
-						placeholder="p0:v0,p1:v1,p2:v2" required="true" />
+						placeholder="p0:v0,p1:v1,p2:v2" required="true" id="incProperties"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="state">Estado:</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="state"
-						placeholder="Abierta" required="true" />
+					<select id="state" name="state"> 
+						<option id="Abierta" value="Abierta">Abierta</option>
+						<option id="Cerrada" value="Cerrada">Cerrada</option>
+						<option id="Anulada" value="Anulada">Anulada</option>
+						<option id="Enproceso" value="En proceso">En proceso</option>
+					</select>
 				</div>
 			</div>
+			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="notification">Notificaciones:</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="notification"
-						placeholder="Si" required="true" />
+					<select id="notification" name="notification"> 
+						<option id="Si" value="Si">Si</option>
+						<option id="No" value="No">No</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="expiration">Caducidad:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="expiration"
-						placeholder="2018-10-25 10:02:29.769579" required="true" />
+						placeholder="2018-10-25 10:02:29.769579" required="true" id="incExpirationDate"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="assignedTo">Asignada:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="assignedTo"
-						placeholder="oper_rUxl" required="true" />
+						placeholder="oper_rUxl" required="true" id="incOper"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-primary" name="btn">Enviar</button>
+					<button type="button" class="btn btn-primary" name="btn1" onclick="fillForm();">Rellenar con valores aleatorios</button>
 				</div>
 			</div>
 		</form>
