@@ -26,5 +26,5 @@ class IncidenceRESTServiceSimulationRandomized extends Simulation {
 			.body(StringBody(""" {"ident":"entidad2","password":"123456","kind":2,"name":"inc_GHKB","description":"Nueva lectura de humedad","location":"2919,178","tags":["Nieve","Fuego","Niebla","Terremoto"],"additionalInformation":"http://puntoverdeleon.com.mx/wp-content/uploads/2016/09/imagen-de-prueba-320x240.jpg","properties":{"p0":"v0","p1":"v1","p2":"v2","p3":"v3"},"state":"Abierta","notification":"si","expireAt":"2018-10-25 10:02:29.769579","assignedTo":"oper_rUxl"} """)).asJSON
 		)
 
-	setUp(scn.inject(rampUsersPerSec(1000) to (2000) during(35) randomized)).protocols(httpProtocol)
+	setUp(scn.inject(rampUsersPerSec(1000) to (2000) during(50) randomized)).protocols(httpProtocol)
 }
