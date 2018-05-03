@@ -1,6 +1,7 @@
 package test;
 
 import static org.hamcrest.Matchers.equalTo;
+
 import static org.junit.Assert.assertThat;
 
 import java.net.URL;
@@ -19,11 +20,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
-import com.uniovi.category.BasicTest;
-
 import asw.Application;
 import asw.webService.IncidenceData;
-import groovy.lang.Category;
 
 @SuppressWarnings("deprecation")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -31,7 +29,6 @@ import groovy.lang.Category;
 @WebAppConfiguration
 @IntegrationTest({ "server.port=0" })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-@Category(BasicTest.class)
 public class MainTest {
 
 	@Value("${local.server.port}")
