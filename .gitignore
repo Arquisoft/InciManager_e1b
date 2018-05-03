@@ -1,3 +1,30 @@
+# eclipse conf file
+.settings
+.classpath
+.project
+.manager
+.scala_dependencies
+.cache
+
+# idea conf files
+.idea
+*.iml
+*.ipr
+*.iws
+
+# Gatling building
+target
+build
+null
+tmp
+temp
+dist
+test-output
+build.log
+
+# MACeros pesaos
+.DS_Store
+
 # Compiled class file
 *.class
 
