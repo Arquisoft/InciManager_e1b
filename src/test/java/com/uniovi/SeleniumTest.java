@@ -22,16 +22,9 @@ import org.junit.experimental.categories.Category;
 // Ordenamos las pruebas por el nombre del m�todo
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SeleniumTest {
-	static String PathFirefox = "C:\\Firefox46.win\\FirefoxPortable.exe";
-
-	static WebDriver driver = getDriver(PathFirefox);
+	static WebDriver driver = new FirefoxDriver();
 	static String URL_INCI = "http://localhost:8090";
 
-	public static WebDriver getDriver(String PathFirefox) {
-		System.setProperty("webdriver.firefox.bin", PathFirefox);
-		WebDriver driver = new FirefoxDriver();
-		return driver;
-	}
 
 	@Before
 	public void setUp() throws Exception {
