@@ -3,7 +3,7 @@ jdk:
 - oraclejdk8
 
 addons:
-- firefox: latest
+- firefox: "46.0"
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
