@@ -138,7 +138,7 @@ En la otra:
 ``` bin/kafka-server-start.sh config/server.properties ```
 
 **OJO**: Si usas windows la ruta cambia:
-```bin``` por ```bin/windows``` y ```.sh``` por ```.bat```
+```bin``` por ```bin\windows``` y ```.sh``` por ```.bat```
 
 
 ### Lanzar Agents y InciManager ###
