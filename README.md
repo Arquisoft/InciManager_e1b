@@ -50,6 +50,74 @@ Este módulo forma parte de un sistema informático de análisis gestión de inc
 		</dependency>
 ```
 
+- **Selenium**
+```xml
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server-standalone</artifactId>
+			<version>2.53.0</version>
+		</dependency>
+```
+
+- **Selenium reporter plugin**
+```xml
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-report-plugin</artifactId>
+			<version>2.13</version>
+		</plugin>
+```
+
+- **Cucumber unit testing**
+```xml
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
+```
+
+- **Cucumber spring**
+```xml
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-spring</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
+```
+
+- **Gatling pruebas de carga**
+```xml
+		<dependency>
+			<groupId>io.gatling.highcharts</groupId>
+			<artifactId>gatling-charts-highcharts</artifactId>
+			<version>2.3.1</version>
+			<scope>test</scope>
+		</dependency>
+```
+
+- **Gatling plugin**
+```xml
+		<plugin>
+			<groupId>io.gatling</groupId>
+			<artifactId>gatling-maven-plugin</artifactId>
+			<version>2.2.4</version>
+			<configuration>
+				<runMultipleSimulations>true</runMultipleSimulations>
+			</configuration>
+		</plugin>
+```
+
+- **Scala compiler para las simulaciones de gatling**
+```xml
+		<plugin>
+        	<groupId>net.alchim31.maven</groupId>
+        	<artifactId>scala-maven-plugin</artifactId>
+        	<version>3.3.2</version>
+		</plugin>
+```
 
 ## ¿Cómo funciona?
 
@@ -165,3 +233,16 @@ python2 generadorDeIncidencias.py n
 Donde ***n*** es el número de incidencias a generar. Hay que tener en cuenta que estamos trabajando con una base de datos MongoDB alojada de forma remota en **mlab.com** por lo que no conviene propasarse con el número de incidencias a enviar, ya que es un hosting gratuito y el tamaño máximo que nos dejan alojar son 500MB y tendrá un ancho de banda limitado.
 
 El aspecto de una incidencia autogenerada tiene el aspecto del JSON mostrado al principio del readme.
+
+### Pruebas de carga - gatling
+Simplemente te situas en el directorio del proyecto, y con los servicios activos, abris una consola y tecleais:
+```
+mvn gatling:execute
+```
+
+Y se ejecutarán las pruebas de carga sobre los escenarios cargados en el directorio **/src/test/scala**, puedes revisar los resultados luego en el directorio **/target/gatling**
+
+### Pruebas selenium
+Actualmente las pruebas de selenium se encuentran en la rama del proyecto llamada "Selenium", donde se encuentra el proyecto entero con estas pruebas incluidas, importante tener el firefox portable en el C://.
+
+Las hemos tenido que retirar de la rama principal porque da conflictos con travys CI
