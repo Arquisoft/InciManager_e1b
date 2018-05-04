@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AgentsConnector {
-	private static final String URL = "http://localhost:8091/user";
+	private static final String URL = "https://mighty-peak-58763.herokuapp.com/user";
 
 	private String username;
 	private String password;
