@@ -242,7 +242,7 @@ mvn gatling:execute
 
 Y se ejecutarán las pruebas de carga sobre los escenarios cargados en el directorio **/src/test/scala**, puedes revisar los resultados luego en el directorio **/target/gatling**
 
-### Pruebas selenium
-Actualmente las pruebas de selenium se encuentran en la rama del proyecto llamada "Selenium", donde se encuentra el proyecto entero con estas pruebas incluidas, importante tener el firefox portable en el C://.
+### Pruebas selenium y cucumber
+Actualmente las pruebas de selenium y cucumber se encuentran en la rama del proyecto llamada "Selenium", donde se encuentra el proyecto entero con estas pruebas incluidas, importante tener el firefox portable en el C://.
 
 Las hemos tenido que retirar de la rama principal porque da conflictos con travys CI
