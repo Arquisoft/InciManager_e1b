@@ -1,8 +1,9 @@
 package test;
 
 import static org.hamcrest.Matchers.equalTo;
-
 import static org.junit.Assert.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.net.URL;
 
@@ -11,14 +12,20 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.WebApplicationContext;
 
 import asw.Application;
 import asw.webService.IncidenceData;
@@ -39,6 +46,12 @@ public class MainTest {
 
 	private IncidenceData incidenceData1;
 	private IncidenceData incidenceData2;
+
+	private MockHttpSession session;
+	private MockMvc mockMvc;
+
+	@Autowired
+	private WebApplicationContext context;
 
 	@Before
 	public void setUp() throws Exception {
@@ -76,6 +89,9 @@ public class MainTest {
 
 		incidenceData2 = new IncidenceData(username, password, name, description, location, tags, additionalInformation,
 				properties, state, notification, expireAt, assignedTo);
+
+		session = new MockHttpSession();
+		mockMvc = MockMvcBuilders.webAppContextSetup(this.context).build();
 
 	}
 
@@ -259,7 +275,7 @@ public class MainTest {
 		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
 		assertThat(response.getBody(), equalTo(emptyName));
 	}
-	
+
 	@Test
 	public void T12worngLocationStyle() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
@@ -275,7 +291,6 @@ public class MainTest {
 		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
 		assertThat(response.getBody(), equalTo(emptyName));
 	}
-	
 
 	@Test
 	public void T13AcceptIncident() {
@@ -289,6 +304,14 @@ public class MainTest {
 
 		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
 		assertThat(response.getBody(), equalTo(request2));
+	}
+
+	@Test
+	public void T14acceptWebLogin() throws Exception {
+		MockHttpServletRequestBuilder request = post("/login").session(session).param("ident", "12345678P")
+				.param("password", "123456").param("kind", "1");
+		mockMvc.perform(request).andExpect(status().isOk());
+
 	}
 
 }
