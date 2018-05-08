@@ -306,12 +306,22 @@ public class MainTest {
 		assertThat(response.getBody(), equalTo(request2));
 	}
 
-	@Test
-	public void T14acceptWebLogin() throws Exception {
-		MockHttpServletRequestBuilder request = post("/login").session(session).param("ident", "12345678P")
-				.param("password", "123456").param("kind", "1");
-		mockMvc.perform(request).andExpect(status().isOk());
-
-	}
+//	@Test
+//	public void T14acceptWebLogin() throws Exception {
+//		MockHttpServletRequestBuilder request = post("/login").session(session).param("ident", "12345678P")
+//				.param("password", "123456").param("kind", "1");
+//		mockMvc.perform(request).andExpect(status().isOk());
+//
+//	}
+//
+//	@Test
+//	public void T15wrongTagsWebStyle() throws Exception {
+//		MockHttpServletRequestBuilder request = post("/login").session(session).param("ident", "12345678P")
+//				.param("password", "123456").param("kind", "1");
+//		mockMvc.perform(request).andExpect(status().isOk());
+//		request = post("/sendIncident", incidenceData1);
+//		mockMvc.perform(request).andExpect(status().isOk());
+//
+//	}
 
 }
