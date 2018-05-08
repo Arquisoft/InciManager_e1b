@@ -65,7 +65,7 @@ public class WebTest {
 	}
 
 	@Test
-	public void T14acceptWebLogin() throws Exception {
+	public void T1acceptWebLogin() throws Exception {
 		MockHttpServletRequestBuilder request = post("/login").session(session).param("ident", "12345678P")
 				.param("password", "123456").param("kind", "1");
 		mockMvc.perform(request).andExpect(status().isOk());
@@ -73,7 +73,7 @@ public class WebTest {
 	}
 
 	@Test
-	public void T15wrongTagsWebStyle() throws Exception {
+	public void T2acceptWebIncident() throws Exception {
 		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
 				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
 				.param("description", incidenceData1.getDescription()).param("location", incidenceData1.getLocation())
@@ -85,6 +85,159 @@ public class WebTest {
 				.param("assignedTo", incidenceData1.getAssignedTo());
 
 		mockMvc.perform(request).andExpect(status().isOk());
+
+	}
+
+	@Test
+	public void T3wrongWebTagsStyle() throws Exception {
+		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
+				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
+				.param("description", incidenceData1.getDescription()).param("location", incidenceData1.getLocation())
+				.param("tags", "asd;asda,asd").param("additionalInformation", incidenceData1.getAdditionalInformation())
+				.param("properties", incidenceData1.getProperties().toString())
+				.param("state", incidenceData1.getState()).param("notification", incidenceData1.getNotification())
+				.param("expiration", incidenceData1.getExpiration())
+				.param("assignedTo", incidenceData1.getAssignedTo());
+
+		mockMvc.perform(request).andExpect(status().isNotFound());
+
+	}
+
+	@Test
+	public void T4emptyWebTags() throws Exception {
+		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
+				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
+				.param("description", incidenceData1.getDescription()).param("location", incidenceData1.getLocation())
+				.param("tags", "").param("additionalInformation", incidenceData1.getAdditionalInformation())
+				.param("properties", incidenceData1.getProperties().toString())
+				.param("state", incidenceData1.getState()).param("notification", incidenceData1.getNotification())
+				.param("expiration", incidenceData1.getExpiration())
+				.param("assignedTo", incidenceData1.getAssignedTo());
+
+		mockMvc.perform(request).andExpect(status().isNotFound());
+
+	}
+
+	@Test
+	public void T5emptyWebName() throws Exception {
+		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
+				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
+				.param("description", incidenceData1.getDescription()).param("location", incidenceData1.getLocation())
+				.param("tags", "").param("additionalInformation", incidenceData1.getAdditionalInformation())
+				.param("properties", incidenceData1.getProperties().toString())
+				.param("state", incidenceData1.getState()).param("notification", incidenceData1.getNotification())
+				.param("expiration", incidenceData1.getExpiration())
+				.param("assignedTo", incidenceData1.getAssignedTo());
+
+		mockMvc.perform(request).andExpect(status().isNotFound());
+
+	}
+
+	@Test
+	public void T6emptyWebDescription() throws Exception {
+		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
+				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
+				.param("description", "").param("location", incidenceData1.getLocation())
+				.param("tags", incidenceData1.getTags().toString())
+				.param("additionalInformation", incidenceData1.getAdditionalInformation())
+				.param("properties", incidenceData1.getProperties().toString())
+				.param("state", incidenceData1.getState()).param("notification", incidenceData1.getNotification())
+				.param("expiration", incidenceData1.getExpiration())
+				.param("assignedTo", incidenceData1.getAssignedTo());
+
+		mockMvc.perform(request).andExpect(status().isNotFound());
+
+	}
+
+	@Test
+	public void T7emptyWebAInfo() throws Exception {
+		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
+				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
+				.param("description", incidenceData1.getDescription()).param("location", incidenceData1.getLocation())
+				.param("tags", incidenceData1.getTags().toString()).param("additionalInformation", "")
+				.param("properties", incidenceData1.getProperties().toString())
+				.param("state", incidenceData1.getState()).param("notification", incidenceData1.getNotification())
+				.param("expiration", incidenceData1.getExpiration())
+				.param("assignedTo", incidenceData1.getAssignedTo());
+
+		mockMvc.perform(request).andExpect(status().isNotFound());
+
+	}
+
+	@Test
+	public void T8emptyWebProperties() throws Exception {
+		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
+				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
+				.param("description", incidenceData1.getDescription()).param("location", incidenceData1.getLocation())
+				.param("tags", incidenceData1.getTags().toString())
+				.param("additionalInformation", incidenceData1.getAdditionalInformation()).param("properties", "")
+				.param("state", incidenceData1.getState()).param("notification", incidenceData1.getNotification())
+				.param("expiration", incidenceData1.getExpiration())
+				.param("assignedTo", incidenceData1.getAssignedTo());
+
+		mockMvc.perform(request).andExpect(status().isNotFound());
+
+	}
+
+	@Test
+	public void T9emptyWebState() throws Exception {
+		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
+				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
+				.param("description", incidenceData1.getDescription()).param("location", incidenceData1.getLocation())
+				.param("tags", incidenceData1.getTags().toString())
+				.param("additionalInformation", incidenceData1.getAdditionalInformation())
+				.param("properties", incidenceData1.getProperties().toString()).param("state", "")
+				.param("notification", incidenceData1.getNotification())
+				.param("expiration", incidenceData1.getExpiration())
+				.param("assignedTo", incidenceData1.getAssignedTo());
+
+		mockMvc.perform(request).andExpect(status().isNotFound());
+
+	}
+
+	@Test
+	public void T10emptyWebNotification() throws Exception {
+		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
+				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
+				.param("description", incidenceData1.getDescription()).param("location", incidenceData1.getLocation())
+				.param("tags", incidenceData1.getTags().toString())
+				.param("additionalInformation", incidenceData1.getAdditionalInformation())
+				.param("properties", incidenceData1.getProperties().toString())
+				.param("state", incidenceData1.getState()).param("notification", "")
+				.param("expiration", incidenceData1.getExpiration())
+				.param("assignedTo", incidenceData1.getAssignedTo());
+
+		mockMvc.perform(request).andExpect(status().isNotFound());
+
+	}
+
+	@Test
+	public void T11emptyWebExpiration() throws Exception {
+		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
+				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
+				.param("description", incidenceData1.getDescription()).param("location", incidenceData1.getLocation())
+				.param("tags", incidenceData1.getTags().toString())
+				.param("additionalInformation", incidenceData1.getAdditionalInformation())
+				.param("properties", incidenceData1.getProperties().toString())
+				.param("state", incidenceData1.getState()).param("notification", incidenceData1.getNotification())
+				.param("expiration", "").param("assignedTo", incidenceData1.getAssignedTo());
+
+		mockMvc.perform(request).andExpect(status().isNotFound());
+
+	}
+
+	@Test
+	public void T12emptyWebAssignedTo() throws Exception {
+		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
+				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
+				.param("description", incidenceData1.getDescription()).param("location", incidenceData1.getLocation())
+				.param("tags", incidenceData1.getTags().toString())
+				.param("additionalInformation", incidenceData1.getAdditionalInformation())
+				.param("properties", incidenceData1.getProperties().toString())
+				.param("state", incidenceData1.getState()).param("notification", incidenceData1.getNotification())
+				.param("expiration", incidenceData1.getExpiration()).param("assignedTo", "");
+
+		mockMvc.perform(request).andExpect(status().isNotFound());
 
 	}
 
