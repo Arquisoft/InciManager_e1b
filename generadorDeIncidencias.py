@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 import sys, time
 
 
-url = "http://localhost:8090/incidence-creator"
+url = "https://incimanagere1b.herokuapp.com/incidence-creator"
 """
 Agent List Input
 """
