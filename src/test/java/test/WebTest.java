@@ -60,6 +60,8 @@ public class WebTest {
 
 		mockMvc = MockMvcBuilders.webAppContextSetup(this.context).build();
 
+		session = new MockHttpSession();
+
 	}
 
 	@Test
