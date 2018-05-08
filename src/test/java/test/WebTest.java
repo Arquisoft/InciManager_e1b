@@ -240,5 +240,38 @@ public class WebTest {
 		mockMvc.perform(request).andExpect(status().isNotFound());
 
 	}
+	
+	@Test
+	public void T13wrongWebPropertiesStyle() throws Exception {
+		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
+				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
+				.param("description", incidenceData1.getDescription()).param("location", incidenceData1.getLocation())
+				.param("tags", incidenceData1.getTags().toString())
+				.param("additionalInformation", incidenceData1.getAdditionalInformation())
+				.param("properties","asd,asda,asd")
+				.param("state", incidenceData1.getState()).param("notification", incidenceData1.getNotification())
+				.param("expiration", incidenceData1.getExpiration())
+				.param("assignedTo", incidenceData1.getAssignedTo());
+
+		mockMvc.perform(request).andExpect(status().isNotFound());
+
+	}
+	
+	@Test
+	public void T14wrongWebLocationStyle() throws Exception {
+		MockHttpServletRequestBuilder request = post("/sendIncident").param("username", incidenceData1.getUsername())
+				.param("password", incidenceData1.getPassword()).param("name", incidenceData1.getName())
+				.param("description", incidenceData1.getDescription()).param("location","99.656,65.9")
+				.param("tags", incidenceData1.getTags().toString())
+				.param("additionalInformation", incidenceData1.getAdditionalInformation())
+				.param("properties", incidenceData1.getProperties().toString())
+				.param("state", incidenceData1.getState()).param("notification", incidenceData1.getNotification())
+				.param("expiration", incidenceData1.getExpiration())
+				.param("assignedTo", incidenceData1.getAssignedTo());
+
+		mockMvc.perform(request).andExpect(status().isNotFound());
+
+	}
+	
 
 }
