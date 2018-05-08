@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.util.EntityUtils;
@@ -58,7 +59,7 @@ public class WebController {
 			auth = agentsConnector.launchRequest(new AgentLoginFormatter(ident, password, kind).getLoginAsJSON());
 			if (auth.getStatusLine().getStatusCode() == HttpStatus.OK.value()) {
 				agentsConnector.setUsername(ident);
-				agentsConnector.setPassword(password);
+				agentsConnector.setPassword(DigestUtils.md5Hex(password));
 				String response = EntityUtils.toString(auth.getEntity(), "UTF-8");
 				JSONObject jsonData = new JSONObject(response);
 				agentsConnector.setLocation(jsonData.getString("location"));
