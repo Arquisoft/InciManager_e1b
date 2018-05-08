@@ -259,9 +259,26 @@ public class MainTest {
 		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
 		assertThat(response.getBody(), equalTo(emptyName));
 	}
+	
+	@Test
+	public void T12worngLocationStyle() {
+		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+		String incidenceURI = base.toString() + "/postIncident";
+		String emptyName = "{\"reason\": \"Wrong location style\"}";
+
+		incidenceData1.setLocation("93.21,-55.66");
+		incidenceData2.setLocation("-66.56,90.33");
+
+		response = template.postForEntity(incidenceURI, incidenceData1, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+
+		response = template.postForEntity(incidenceURI, incidenceData2, String.class);
+		assertThat(response.getBody(), equalTo(emptyName));
+	}
+	
 
 	@Test
-	public void T12AcceptIncident() {
+	public void T13AcceptIncident() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		String incidenceURI = base.toString() + "/postIncident";
 		String request1 = "{\"username\":null,\"password\":null,\"name\":\"FUGA GAS\",\"description\":\"Fuga de gas cocina\",\"location\":\"29,29\",\"tags\":\"bombona,gas\",\"additionalInformation\":\"Butano\",\"properties\":\"bombona:butano\",\"state\":\"Abierta\",\"notification\":\"Si\",\"expiration\":\"2018-10-25 10:02:29.769579\",\"assignedTo\":\"oper_rUxl\"}";
