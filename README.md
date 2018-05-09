@@ -249,4 +249,4 @@ Las hemos tenido que retirar de la rama principal porque da conflictos con travy
 
 
 ### Endpoint despliegue
-Desspliegue: https://incimanagere1b.herokuapp.com/ ó http://incimanagere1b.herokuapp.com/
+Despliegue: https://incimanagere1b.herokuapp.com/ ó http://incimanagere1b.herokuapp.com/
